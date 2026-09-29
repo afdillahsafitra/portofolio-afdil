@@ -321,18 +321,201 @@
             align-items: center;
             justify-content: center;
             border-radius: 20px;
-            font-weight: 800;
-            letter-spacing: 0.05em;
-            color: #fff;
-            background: linear-gradient(135deg, #6366F1, #22D3EE);
-            box-shadow: 0 10px 30px -8px rgba(99,102,241,0.7), inset 0 1px 0 rgba(255,255,255,0.4);
+            background: linear-gradient(145deg, #FFFFFF, #E0F2FE);
+            border: 1px solid rgba(255,255,255,0.6);
+            box-shadow: 0 10px 30px -8px rgba(41,163,219,0.7), inset 0 -2px 0 rgba(41,163,219,0.15);
+        }
+        /* White glass stage that shows the company logo */
+        .company-stage {
+            background:
+                radial-gradient(circle at 30% 20%, #FFFFFF 0%, #F1F5F9 45%, #DBEAFE 100%);
+        }
+        .company-orb {
+            position: absolute;
+            border-radius: 9999px;
+            filter: blur(40px);
+            opacity: 0.55;
+            animation: orbDrift 9s ease-in-out infinite;
+        }
+        .company-orb-a { width: 45%; height: 60%; left: -8%; top: -10%; background: #7DD3FC; }
+        .company-orb-b { width: 40%; height: 55%; right: -6%; bottom: -12%; background: #A5B4FC; animation-delay: -4s; }
+        @keyframes orbDrift {
+            0%, 100% { transform: translate(0, 0) scale(1); }
+            50% { transform: translate(18px, 12px) scale(1.1); }
+        }
+        .company-logo-hero {
+            filter: drop-shadow(0 18px 24px rgba(41,163,219,0.35));
+            animation: floatY 6s ease-in-out infinite;
         }
         @media (max-width: 1023px) {
             .company-browser { transform: none; }
         }
         @media (prefers-reduced-motion: reduce) {
             .company-browser { transition: none; }
-            .company-shine { animation: none; }
+            .company-shine, .company-orb, .company-logo-hero { animation: none; }
+        }
+
+        /* ===== Skills & Expertise ===== */
+        .skill-group {
+            position: relative;
+            padding: 24px;
+            border-radius: 24px;
+            background: linear-gradient(150deg, rgba(var(--accent), 0.14), rgba(22,27,34,0.7) 55%);
+            border: 1px solid rgba(255,255,255,0.08);
+            backdrop-filter: blur(16px);
+            -webkit-backdrop-filter: blur(16px);
+            box-shadow: inset 0 1px 0 rgba(255,255,255,0.08);
+            transition: transform 0.35s ease, border-color 0.35s ease, box-shadow 0.35s ease;
+        }
+        .skill-group:hover {
+            transform: translateY(-4px);
+            border-color: rgba(var(--accent), 0.5);
+            box-shadow: 0 24px 50px -22px rgba(var(--accent), 0.55), inset 0 1px 0 rgba(255,255,255,0.12);
+        }
+        .skill-icon {
+            width: 48px;
+            height: 48px;
+            flex-shrink: 0;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            border-radius: 16px;
+            font-size: 1.15rem;
+            color: rgb(var(--accent));
+            background: rgba(var(--accent), 0.16);
+            border: 1px solid rgba(var(--accent), 0.3);
+            transition: transform 0.35s ease;
+        }
+        .skill-group:hover .skill-icon { transform: rotate(-6deg) scale(1.08); }
+        .skill-badge {
+            flex-shrink: 0;
+            padding: 4px 10px;
+            border-radius: 8px;
+            font-family: 'JetBrains Mono', monospace;
+            font-size: 10px;
+            font-weight: 600;
+            color: rgb(var(--accent));
+            background: rgba(var(--accent), 0.14);
+        }
+        .skill-pill {
+            display: inline-flex;
+            align-items: center;
+            gap: 8px;
+            padding: 8px 12px;
+            border-radius: 12px;
+            font-size: 12px;
+            font-weight: 500;
+            color: #E5E7EB;
+            background: rgba(13,15,18,0.65);
+            border: 1px solid rgba(255,255,255,0.07);
+            transition: border-color 0.25s ease, transform 0.25s ease;
+        }
+        .skill-pill:hover { border-color: rgba(var(--accent), 0.55); transform: translateY(-2px); }
+
+        /* ===== Contact & Social ===== */
+        .social-card {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            gap: 6px;
+            padding: 20px 12px;
+            border-radius: 20px;
+            text-align: center;
+            background: linear-gradient(160deg, rgba(var(--brand), 0.12), rgba(22,27,34,0.7) 60%);
+            border: 1px solid rgba(255,255,255,0.08);
+            backdrop-filter: blur(14px);
+            -webkit-backdrop-filter: blur(14px);
+            transition: transform 0.3s ease, border-color 0.3s ease, box-shadow 0.3s ease;
+        }
+        .social-card:hover,
+        .social-card:focus-visible {
+            transform: translateY(-6px);
+            border-color: rgba(var(--brand), 0.6);
+            box-shadow: 0 20px 40px -18px rgba(var(--brand), 0.7);
+            outline: none;
+        }
+        .social-icon {
+            width: 48px;
+            height: 48px;
+            margin-bottom: 4px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            border-radius: 9999px;
+            font-size: 1.25rem;
+            color: #fff;
+            background: rgba(var(--brand), 0.85);
+            box-shadow: 0 8px 24px -6px rgba(var(--brand), 0.8), inset 0 1px 0 rgba(255,255,255,0.35);
+            transition: transform 0.3s ease;
+        }
+        .social-card:hover .social-icon { transform: scale(1.1) rotate(-6deg); }
+        .contact-profile,
+        .contact-form-card {
+            padding: 28px;
+            border-radius: 28px;
+            background: linear-gradient(150deg, rgba(255,255,255,0.07), rgba(22,27,34,0.75) 50%);
+            border: 1px solid rgba(255,255,255,0.1);
+            backdrop-filter: blur(18px);
+            -webkit-backdrop-filter: blur(18px);
+            box-shadow: 0 30px 60px -30px rgba(0,0,0,0.8), inset 0 1px 0 rgba(255,255,255,0.1);
+        }
+        .contact-row {
+            display: flex;
+            align-items: center;
+            gap: 14px;
+            padding: 12px 14px;
+            border-radius: 16px;
+            background: rgba(13,15,18,0.55);
+            border: 1px solid rgba(255,255,255,0.06);
+        }
+        .contact-row-icon {
+            width: 38px;
+            height: 38px;
+            flex-shrink: 0;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            border-radius: 12px;
+            background: rgba(255,255,255,0.05);
+        }
+        .contact-input {
+            width: 100%;
+            padding: 12px 16px;
+            border-radius: 14px;
+            font-size: 14px;
+            color: #fff;
+            background: rgba(13,15,18,0.7);
+            border: 1px solid rgba(255,255,255,0.08);
+            transition: border-color 0.2s ease, box-shadow 0.2s ease;
+        }
+        .contact-input::placeholder { color: #4B5563; }
+        .contact-input:focus {
+            outline: none;
+            border-color: rgba(99,102,241,0.8);
+            box-shadow: 0 0 0 4px rgba(99,102,241,0.15);
+        }
+        .topic-chip { cursor: pointer; }
+        .topic-chip input { position: absolute; opacity: 0; pointer-events: none; }
+        .topic-chip span {
+            display: inline-block;
+            padding: 8px 14px;
+            border-radius: 9999px;
+            font-size: 12px;
+            color: #9CA3AF;
+            background: rgba(13,15,18,0.7);
+            border: 1px solid rgba(255,255,255,0.08);
+            transition: all 0.2s ease;
+        }
+        .topic-chip:hover span { color: #fff; border-color: rgba(255,255,255,0.2); }
+        .topic-chip input:checked + span {
+            color: #fff;
+            border-color: transparent;
+            background: linear-gradient(90deg, #6366F1, #22D3EE);
+            box-shadow: 0 6px 18px -6px rgba(99,102,241,0.8);
+        }
+        .topic-chip input:focus-visible + span { outline: 2px solid #22D3EE; outline-offset: 2px; }
+        @media (prefers-reduced-motion: reduce) {
+            .skill-group, .skill-pill, .social-card, .social-icon, .skill-icon { transition: none; }
         }
 
         /* Scroll Reveal Animation */
@@ -357,10 +540,9 @@
         <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 h-20 flex items-center justify-between">
             <!-- Brand Logo -->
             <a href="#" class="flex items-center gap-2 group">
-                <div class="w-10 h-10 rounded-xl bg-gradient-to-br from-indigo-600 to-cyan-400 p-[1px] transition-transform duration-300 group-hover:scale-105">
-                    <div class="w-full h-full bg-darkBg rounded-[11px] flex items-center justify-center">
-                        <span class="font-extrabold text-lg text-white tracking-wider">AS</span>
-                    </div>
+                <div class="relative w-11 h-11 rounded-full bg-gradient-to-br from-indigo-500 to-cyan-400 p-[2px] shadow-glowCyan transition-transform duration-300 group-hover:scale-105">
+                    <img src="assets/afdillah-avatar.webp" alt="Afdillah Safitra" width="160" height="160" class="w-full h-full rounded-full object-cover bg-white">
+                    <span class="absolute bottom-0 right-0 w-3 h-3 rounded-full bg-emerald-400 ring-2 ring-darkBg"></span>
                 </div>
                 <div class="flex flex-col">
                     <span class="font-bold text-base tracking-tight text-white group-hover:text-accentCyan transition-colors">Afdillah Safitra</span>
@@ -669,24 +851,17 @@
 
                         <!-- Screenshot Area -->
                         <div class="relative aspect-[16/10] overflow-hidden bg-darkBg">
-                            <!-- Fallback shown if the live preview can't load -->
-                            <div class="absolute inset-0 flex flex-col items-center justify-center gap-3 sm:gap-4 pb-12 sm:pb-0 bg-gradient-to-br from-indigo-950 via-darkBg to-cyan-950">
-                                <div class="absolute inset-0 bg-grid-pattern"></div>
-                                <div class="company-logo w-14 h-14 sm:w-20 sm:h-20 text-lg sm:text-2xl">HTS</div>
-                                <div class="relative text-center">
-                                    <div class="font-bold text-white">Human Technology Solutions</div>
-                                    <div class="text-xs font-mono text-gray-400 mt-1">humantechnologysolutions.com</div>
-                                </div>
+                            <!-- Company logo showcase -->
+                            <div class="company-stage absolute inset-0 flex items-center justify-center pb-14 sm:pb-10">
+                                <div class="company-orb company-orb-a" aria-hidden="true"></div>
+                                <div class="company-orb company-orb-b" aria-hidden="true"></div>
+                                <img src="assets/hts-logo-full.webp"
+                                     alt="PT Human Technology Solutions logo"
+                                     style="height: 68%; width: auto; max-width: 80%; object-fit: contain;"
+                                     class="company-logo-hero relative transition-transform duration-700 ease-out group-hover:scale-105">
                             </div>
-                            <!-- Company profile image: put your photo at assets/company-profile.webp.
-                                 If it's missing, a live snapshot of the website is used, then the logo card above. -->
-                            <img src="assets/company-profile.webp"
-                                 alt="PT Human Technology Solutions"
-                                 loading="lazy"
-                                 onerror="if (!this.dataset.fallback) { this.dataset.fallback = '1'; this.src = 'https://image.thum.io/get/width/1200/crop/750/https://humantechnologysolutions.com/'; } else { this.remove(); }"
-                                 class="relative w-full h-full object-cover object-top transition-transform duration-[1.5s] ease-out group-hover:scale-105">
                             <div class="company-shine" aria-hidden="true"></div>
-                            <div class="absolute inset-0 bg-gradient-to-t from-darkBg/90 via-transparent to-transparent"></div>
+                            <div class="absolute inset-x-0 bottom-0 h-1/3 bg-gradient-to-t from-slate-900/40 to-transparent"></div>
 
                             <!-- Hover CTA -->
                             <div class="absolute inset-x-0 bottom-0 p-5 flex items-end justify-between gap-3">
@@ -707,7 +882,7 @@
                         <div class="absolute -inset-1.5 bg-gradient-to-br from-accentViolet to-accentCyan rounded-3xl blur-2xl opacity-25 -z-10"></div>
                         <div class="glass-card rounded-3xl p-6 sm:p-8 border border-white/10 space-y-6">
                             <div class="flex items-center gap-4">
-                                <div class="company-logo w-16 h-16 text-xl">HTS</div>
+                                <div class="company-logo w-16 h-16 p-2.5"><img src="assets/hts-logo-mark.webp" alt="" class="w-full h-full object-contain"></div>
                                 <div>
                                     <h3 class="text-xl font-bold text-white leading-tight">PT Human Technology Solutions</h3>
                                     <span class="inline-flex items-center gap-1.5 mt-1.5 px-2.5 py-1 rounded-md bg-accentViolet/20 text-accentViolet text-[10px] font-mono font-semibold">
@@ -901,164 +1076,241 @@
             </div>
         </section>
 
-        <!-- Interactive Skills & Toolstack Section -->
-        <section id="skills" class="reveal space-y-8 glass-card rounded-3xl p-8 sm:p-12 border border-gray-800 scroll-mt-28">
-            <div class="max-w-2xl">
-                <span class="text-xs font-mono uppercase tracking-widest text-accentCyan">Core Capabilities</span>
-                <h2 class="text-3xl font-bold text-white mt-1">Skills & Tech Stack</h2>
-                <p class="text-sm text-gray-400 mt-2">The languages, frameworks, and tools I use to design, build, and ship web and mobile products.</p>
+        <!-- Skills & Expertise Section -->
+        <section id="skills" class="reveal space-y-10 scroll-mt-28">
+            <div class="flex flex-col md:flex-row md:items-end justify-between gap-4 border-b border-gray-800 pb-6">
+                <div>
+                    <span class="text-xs font-mono uppercase tracking-widest text-accentCyan">Core Capabilities</span>
+                    <h2 class="text-3xl sm:text-4xl font-bold text-white mt-1">Skills & Expertise</h2>
+                </div>
+                <p class="text-sm text-gray-400 max-w-md">Two years of building for the web, shipping mobile apps, and leading a company &mdash; backed by a K3 mindset for safe, reliable work.</p>
             </div>
 
-            <!-- Category Filter Buttons -->
-            <div class="flex flex-wrap gap-2 pt-2" id="skillFilters">
-                <button onclick="filterSkills('all', this)" class="skill-btn active px-4 py-2 rounded-xl text-xs font-mono font-semibold bg-accentViolet text-white transition-all">All Skills</button>
-                <button onclick="filterSkills('web', this)" class="skill-btn px-4 py-2 rounded-xl text-xs font-mono font-semibold bg-darkBg text-gray-400 hover:text-white border border-gray-800 transition-all">Web</button>
-                <button onclick="filterSkills('mobile', this)" class="skill-btn px-4 py-2 rounded-xl text-xs font-mono font-semibold bg-darkBg text-gray-400 hover:text-white border border-gray-800 transition-all">Mobile</button>
-                <button onclick="filterSkills('tools', this)" class="skill-btn px-4 py-2 rounded-xl text-xs font-mono font-semibold bg-darkBg text-gray-400 hover:text-white border border-gray-800 transition-all">Backend & Tools</button>
-            </div>
+            <div class="grid grid-cols-1 md:grid-cols-2 gap-6">
+                <!-- Web Development -->
+                <div class="skill-group group" style="--accent: 99, 102, 241;">
+                    <div class="flex items-start justify-between gap-4">
+                        <div class="flex items-center gap-4">
+                            <span class="skill-icon"><i class="fa-solid fa-code"></i></span>
+                            <div>
+                                <h3 class="text-lg font-bold text-white">Web Development</h3>
+                                <p class="text-xs text-gray-400">Websites & web applications</p>
+                            </div>
+                        </div>
+                        <span class="skill-badge">2+ Years</span>
+                    </div>
+                    <div class="flex flex-wrap gap-2 mt-5">
+                        <span class="skill-pill"><i class="fa-brands fa-html5 text-orange-400"></i>HTML5</span>
+                        <span class="skill-pill"><i class="fa-brands fa-css3-alt text-sky-400"></i>CSS3</span>
+                        <span class="skill-pill"><i class="fa-brands fa-js text-yellow-300"></i>JavaScript</span>
+                        <span class="skill-pill"><i class="fa-solid fa-wind text-cyan-300"></i>Tailwind CSS</span>
+                        <span class="skill-pill"><i class="fa-brands fa-react text-cyan-400"></i>React</span>
+                        <span class="skill-pill"><i class="fa-solid fa-display text-indigo-300"></i>Responsive Design</span>
+                    </div>
+                </div>
 
-            <!-- Skill Chips Grid -->
-            <div class="grid grid-cols-2 sm:grid-cols-3 md:grid-cols-4 lg:grid-cols-6 gap-4 pt-4" id="skillGrid">
-                <div class="skill-card web p-4 rounded-2xl bg-darkBg/80 border border-gray-800 flex flex-col items-center justify-center text-center gap-2 hover:border-accentViolet transition-colors group">
-                    <i class="fa-brands fa-html5 text-2xl text-orange-400 group-hover:scale-110 transition-transform"></i>
-                    <span class="text-xs font-semibold text-gray-200">HTML & CSS</span>
-                    <span class="text-[10px] font-mono text-gray-500">Responsive UI</span>
+                <!-- Mobile Development -->
+                <div class="skill-group group" style="--accent: 34, 211, 238;">
+                    <div class="flex items-start justify-between gap-4">
+                        <div class="flex items-center gap-4">
+                            <span class="skill-icon"><i class="fa-solid fa-mobile-screen-button"></i></span>
+                            <div>
+                                <h3 class="text-lg font-bold text-white">Mobile Development</h3>
+                                <p class="text-xs text-gray-400">Android & cross-platform apps</p>
+                            </div>
+                        </div>
+                        <span class="skill-badge">Apps</span>
+                    </div>
+                    <div class="flex flex-wrap gap-2 mt-5">
+                        <span class="skill-pill"><i class="fa-solid fa-feather text-sky-400"></i>Flutter</span>
+                        <span class="skill-pill"><i class="fa-brands fa-android text-emerald-400"></i>Android</span>
+                        <span class="skill-pill"><i class="fa-solid fa-plug text-cyan-300"></i>REST API Integration</span>
+                        <span class="skill-pill"><i class="fa-brands fa-google-play text-emerald-300"></i>App Publishing</span>
+                        <span class="skill-pill"><i class="fa-solid fa-object-group text-purple-300"></i>Mobile UI/UX</span>
+                    </div>
                 </div>
-                <div class="skill-card web p-4 rounded-2xl bg-darkBg/80 border border-gray-800 flex flex-col items-center justify-center text-center gap-2 hover:border-accentViolet transition-colors group">
-                    <i class="fa-brands fa-js text-2xl text-yellow-300 group-hover:scale-110 transition-transform"></i>
-                    <span class="text-xs font-semibold text-gray-200">JavaScript</span>
-                    <span class="text-[10px] font-mono text-gray-500">Interactive Web</span>
+
+                <!-- Backend & Tools -->
+                <div class="skill-group group" style="--accent: 168, 85, 247;">
+                    <div class="flex items-start justify-between gap-4">
+                        <div class="flex items-center gap-4">
+                            <span class="skill-icon"><i class="fa-solid fa-server"></i></span>
+                            <div>
+                                <h3 class="text-lg font-bold text-white">Backend & Tools</h3>
+                                <p class="text-xs text-gray-400">Data, APIs & deployment</p>
+                            </div>
+                        </div>
+                        <span class="skill-badge">Software</span>
+                    </div>
+                    <div class="flex flex-wrap gap-2 mt-5">
+                        <span class="skill-pill"><i class="fa-brands fa-php text-indigo-300"></i>PHP</span>
+                        <span class="skill-pill"><i class="fa-brands fa-laravel text-red-400"></i>Laravel</span>
+                        <span class="skill-pill"><i class="fa-solid fa-database text-sky-300"></i>MySQL</span>
+                        <span class="skill-pill"><i class="fa-brands fa-git-alt text-orange-500"></i>Git & GitHub</span>
+                        <span class="skill-pill"><i class="fa-solid fa-cloud-arrow-up text-emerald-300"></i>Hosting & Deploy</span>
+                        <span class="skill-pill"><i class="fa-brands fa-figma text-pink-400"></i>Figma</span>
+                    </div>
                 </div>
-                <div class="skill-card web p-4 rounded-2xl bg-darkBg/80 border border-gray-800 flex flex-col items-center justify-center text-center gap-2 hover:border-accentViolet transition-colors group">
-                    <i class="fa-brands fa-react text-2xl text-accentCyan group-hover:scale-110 transition-transform"></i>
-                    <span class="text-xs font-semibold text-gray-200">React</span>
-                    <span class="text-[10px] font-mono text-gray-500">Frontend Apps</span>
-                </div>
-                <div class="skill-card mobile p-4 rounded-2xl bg-darkBg/80 border border-gray-800 flex flex-col items-center justify-center text-center gap-2 hover:border-accentCyan transition-colors group">
-                    <i class="fa-solid fa-mobile-screen-button text-2xl text-sky-400 group-hover:scale-110 transition-transform"></i>
-                    <span class="text-xs font-semibold text-gray-200">Flutter</span>
-                    <span class="text-[10px] font-mono text-gray-500">Cross-platform</span>
-                </div>
-                <div class="skill-card mobile p-4 rounded-2xl bg-darkBg/80 border border-gray-800 flex flex-col items-center justify-center text-center gap-2 hover:border-accentCyan transition-colors group">
-                    <i class="fa-brands fa-android text-2xl text-emerald-400 group-hover:scale-110 transition-transform"></i>
-                    <span class="text-xs font-semibold text-gray-200">Android</span>
-                    <span class="text-[10px] font-mono text-gray-500">Native Apps</span>
-                </div>
-                <div class="skill-card tools p-4 rounded-2xl bg-darkBg/80 border border-gray-800 flex flex-col items-center justify-center text-center gap-2 hover:border-emerald-400 transition-colors group">
-                    <i class="fa-brands fa-php text-2xl text-indigo-300 group-hover:scale-110 transition-transform"></i>
-                    <span class="text-xs font-semibold text-gray-200">PHP & Laravel</span>
-                    <span class="text-[10px] font-mono text-gray-500">Backend & API</span>
-                </div>
-                <div class="skill-card tools p-4 rounded-2xl bg-darkBg/80 border border-gray-800 flex flex-col items-center justify-center text-center gap-2 hover:border-emerald-400 transition-colors group">
-                    <i class="fa-solid fa-database text-2xl text-accentViolet group-hover:scale-110 transition-transform"></i>
-                    <span class="text-xs font-semibold text-gray-200">MySQL</span>
-                    <span class="text-[10px] font-mono text-gray-500">Database</span>
-                </div>
-                <div class="skill-card tools p-4 rounded-2xl bg-darkBg/80 border border-gray-800 flex flex-col items-center justify-center text-center gap-2 hover:border-emerald-400 transition-colors group">
-                    <i class="fa-brands fa-git-alt text-2xl text-orange-500 group-hover:scale-110 transition-transform"></i>
-                    <span class="text-xs font-semibold text-gray-200">Git & GitHub</span>
-                    <span class="text-[10px] font-mono text-gray-500">Version Control</span>
-                </div>
-                <div class="skill-card web p-4 rounded-2xl bg-darkBg/80 border border-gray-800 flex flex-col items-center justify-center text-center gap-2 hover:border-accentViolet transition-colors group">
-                    <i class="fa-solid fa-wind text-2xl text-cyan-300 group-hover:scale-110 transition-transform"></i>
-                    <span class="text-xs font-semibold text-gray-200">Tailwind CSS</span>
-                    <span class="text-[10px] font-mono text-gray-500">Modern Styling</span>
-                </div>
-                <div class="skill-card tools p-4 rounded-2xl bg-darkBg/80 border border-gray-800 flex flex-col items-center justify-center text-center gap-2 hover:border-emerald-400 transition-colors group">
-                    <i class="fa-brands fa-figma text-2xl text-pink-400 group-hover:scale-110 transition-transform"></i>
-                    <span class="text-xs font-semibold text-gray-200">Figma</span>
-                    <span class="text-[10px] font-mono text-gray-500">UI Design</span>
-                </div>
-                <div class="skill-card tools p-4 rounded-2xl bg-darkBg/80 border border-gray-800 flex flex-col items-center justify-center text-center gap-2 hover:border-emerald-400 transition-colors group">
-                    <i class="fa-solid fa-server text-2xl text-emerald-400 group-hover:scale-110 transition-transform"></i>
-                    <span class="text-xs font-semibold text-gray-200">Hosting & Deploy</span>
-                    <span class="text-[10px] font-mono text-gray-500">cPanel & VPS</span>
-                </div>
-                <div class="skill-card mobile p-4 rounded-2xl bg-darkBg/80 border border-gray-800 flex flex-col items-center justify-center text-center gap-2 hover:border-accentCyan transition-colors group">
-                    <i class="fa-solid fa-plug text-2xl text-accentCyan group-hover:scale-110 transition-transform"></i>
-                    <span class="text-xs font-semibold text-gray-200">REST API</span>
-                    <span class="text-[10px] font-mono text-gray-500">App Integration</span>
+
+                <!-- Leadership & K3 -->
+                <div class="skill-group group" style="--accent: 52, 211, 153;">
+                    <div class="flex items-start justify-between gap-4">
+                        <div class="flex items-center gap-4">
+                            <span class="skill-icon"><i class="fa-solid fa-helmet-safety"></i></span>
+                            <div>
+                                <h3 class="text-lg font-bold text-white">Leadership & K3</h3>
+                                <p class="text-xs text-gray-400">Founder mindset & workplace safety</p>
+                            </div>
+                        </div>
+                        <span class="skill-badge">Founder</span>
+                    </div>
+                    <div class="flex flex-wrap gap-2 mt-5">
+                        <span class="skill-pill"><i class="fa-solid fa-crown text-amber-300"></i>Business Leadership</span>
+                        <span class="skill-pill"><i class="fa-solid fa-list-check text-emerald-300"></i>Project Management</span>
+                        <span class="skill-pill"><i class="fa-solid fa-comments text-sky-300"></i>Client Communication</span>
+                        <span class="skill-pill"><i class="fa-solid fa-people-group text-indigo-300"></i>Team Collaboration</span>
+                        <span class="skill-pill"><i class="fa-solid fa-shield-halved text-emerald-400"></i>K3 / Occupational Safety</span>
+                    </div>
                 </div>
             </div>
         </section>
 
-        <!-- Contact & Quick Form Section -->
-        <section id="contact" class="reveal grid grid-cols-1 lg:grid-cols-12 gap-8 items-start scroll-mt-28">
-            <!-- Left Contact Info -->
-            <div class="lg:col-span-5 space-y-6">
+        <!-- Contact & Social Section -->
+        <section id="contact" class="reveal relative overflow-x-clip scroll-mt-28">
+            <div class="absolute -top-10 left-1/4 w-80 h-80 bg-accentViolet/15 rounded-full blur-[110px] pointer-events-none"></div>
+            <div class="absolute bottom-0 right-10 w-72 h-72 bg-accentCyan/10 rounded-full blur-[100px] pointer-events-none"></div>
+
+            <div class="text-center max-w-2xl mx-auto space-y-4">
                 <span class="text-xs font-mono uppercase tracking-widest text-accentCyan">Let's Connect</span>
-                <h2 class="text-3xl sm:text-4xl font-extrabold text-white">Let's Build Something Impactful Together.</h2>
-                <p class="text-gray-400 text-sm leading-relaxed">
-                    Need a website, a mobile app, or a custom system for your business? Tell me about your idea &mdash; I'm based in Batam and happy to work with clients anywhere.
+                <h2 class="text-3xl sm:text-5xl font-extrabold text-white leading-tight">Let's Build Something <span class="text-gradient">Great Together.</span></h2>
+                <p class="text-gray-400 leading-relaxed">
+                    Need a website, a mobile app, or a custom system for your business &mdash; or just want to connect? Reach out on any platform below. I'm based in Batam and happy to work with people anywhere.
                 </p>
-
-                <!-- Quick Copy Email Button -->
-                <div class="p-4 rounded-2xl glass-card border border-gray-800 flex items-center justify-between">
-                    <div class="flex items-center gap-3">
-                        <div class="w-10 h-10 rounded-xl bg-accentViolet/20 text-accentViolet flex items-center justify-center">
-                            <i class="fa-solid fa-envelope"></i>
-                        </div>
-                        <div>
-                            <div class="text-[10px] font-mono text-gray-400 uppercase">Direct Email</div>
-                            <div id="emailText" class="text-sm font-semibold text-white">afdillah.safitra@gmail.com</div>
-                        </div>
-                    </div>
-                    <button onclick="copyEmail()" class="px-3 py-2 rounded-lg bg-gray-800 hover:bg-gray-700 text-xs font-mono text-accentCyan transition-colors flex items-center gap-1.5">
-                        <i class="fa-regular fa-copy"></i>
-                        <span id="copyBtnText">Copy</span>
-                    </button>
-                </div>
-
-                <!-- Social Links -->
-                <div class="flex items-center gap-3 pt-2">
-                    <a href="https://linkedin.com" target="_blank" rel="noopener" class="w-11 h-11 rounded-xl glass-card border border-gray-800 flex items-center justify-center text-gray-400 hover:text-white hover:border-accentViolet transition-all">
-                        <i class="fa-brands fa-linkedin-in text-lg"></i>
-                    </a>
-                    <a href="https://github.com/afdillahsafitra" target="_blank" rel="noopener" aria-label="GitHub" class="w-11 h-11 rounded-xl glass-card border border-gray-800 flex items-center justify-center text-gray-400 hover:text-white hover:border-accentCyan transition-all">
-                        <i class="fa-brands fa-github text-lg"></i>
-                    </a>
-                    <a href="https://instagram.com" target="_blank" rel="noopener" class="w-11 h-11 rounded-xl glass-card border border-gray-800 flex items-center justify-center text-gray-400 hover:text-white hover:border-pink-500 transition-all">
-                        <i class="fa-brands fa-instagram text-lg"></i>
-                    </a>
-                    <a href="https://wa.me/" target="_blank" rel="noopener" class="w-11 h-11 rounded-xl glass-card border border-gray-800 flex items-center justify-center text-gray-400 hover:text-white hover:border-emerald-500 transition-all">
-                        <i class="fa-brands fa-whatsapp text-lg"></i>
-                    </a>
-                </div>
             </div>
 
-            <!-- Right Quick Contact Form -->
-            <div class="lg:col-span-7 glass-card rounded-3xl p-8 border border-gray-800">
-                <form id="contactForm" onsubmit="handleFormSubmit(event)" class="space-y-4">
-                    <div class="grid grid-cols-1 sm:grid-cols-2 gap-4">
-                        <div>
-                            <label class="block text-xs font-mono text-gray-400 mb-2">YOUR NAME</label>
-                            <input type="text" required placeholder="John Doe" class="w-full px-4 py-3 rounded-xl bg-darkBg border border-gray-800 text-white placeholder-gray-600 focus:outline-none focus:border-accentViolet text-sm">
+            <!-- Social Connect Cards -->
+            <!-- Replace the LinkedIn, Instagram, and WhatsApp links with your own profile URLs / number -->
+            <div class="grid grid-cols-2 lg:grid-cols-6 gap-4 mt-10">
+                <a href="https://wa.me/" target="_blank" rel="noopener" class="social-card" style="--brand: 37, 211, 102;">
+                    <span class="social-icon"><i class="fa-brands fa-whatsapp"></i></span>
+                    <span class="text-sm font-semibold text-white">WhatsApp</span>
+                    <span class="text-[10px] font-mono text-gray-400">Chat directly</span>
+                </a>
+                <a href="https://instagram.com" target="_blank" rel="noopener" class="social-card" style="--brand: 225, 48, 108;">
+                    <span class="social-icon"><i class="fa-brands fa-instagram"></i></span>
+                    <span class="text-sm font-semibold text-white">Instagram</span>
+                    <span class="text-[10px] font-mono text-gray-400">Follow along</span>
+                </a>
+                <a href="https://linkedin.com" target="_blank" rel="noopener" class="social-card" style="--brand: 10, 102, 194;">
+                    <span class="social-icon"><i class="fa-brands fa-linkedin-in"></i></span>
+                    <span class="text-sm font-semibold text-white">LinkedIn</span>
+                    <span class="text-[10px] font-mono text-gray-400">Professional network</span>
+                </a>
+                <a href="https://github.com/afdillahsafitra" target="_blank" rel="noopener" class="social-card" style="--brand: 180, 190, 210;">
+                    <span class="social-icon"><i class="fa-brands fa-github"></i></span>
+                    <span class="text-sm font-semibold text-white">GitHub</span>
+                    <span class="text-[10px] font-mono text-gray-400">@afdillahsafitra</span>
+                </a>
+                <button type="button" onclick="copyEmail()" class="social-card" style="--brand: 99, 102, 241;">
+                    <span class="social-icon"><i class="fa-solid fa-envelope"></i></span>
+                    <span class="text-sm font-semibold text-white">Email</span>
+                    <span id="copyBtnText" class="text-[10px] font-mono text-gray-400">Tap to copy</span>
+                </button>
+                <a href="https://humantechnologysolutions.com/" target="_blank" rel="noopener" class="social-card" style="--brand: 41, 163, 219;">
+                    <span class="social-icon" style="background: #fff;"><img src="assets/hts-logo-mark.webp" alt="" style="width: 24px; height: 24px; object-fit: contain;"></span>
+                    <span class="text-sm font-semibold text-white">Company</span>
+                    <span class="text-[10px] font-mono text-gray-400">PT HTS Website</span>
+                </a>
+            </div>
+
+            <div class="grid grid-cols-1 lg:grid-cols-12 gap-6 mt-8 items-stretch">
+                <!-- Personal Contact Card -->
+                <div class="lg:col-span-5 contact-profile">
+                    <div class="flex items-center gap-4">
+                        <div class="relative w-16 h-16 shrink-0 rounded-full bg-gradient-to-br from-indigo-500 to-cyan-400 p-[2px] shadow-glowCyan">
+                            <img src="assets/afdillah-avatar.webp" alt="Afdillah Safitra" width="160" height="160" class="w-full h-full rounded-full object-cover bg-white">
+                            <span class="absolute bottom-0.5 right-0.5 w-3.5 h-3.5 rounded-full bg-emerald-400 ring-2 ring-darkBg"></span>
                         </div>
                         <div>
-                            <label class="block text-xs font-mono text-gray-400 mb-2">EMAIL ADDRESS</label>
-                            <input type="email" required placeholder="john@example.com" class="w-full px-4 py-3 rounded-xl bg-darkBg border border-gray-800 text-white placeholder-gray-600 focus:outline-none focus:border-accentViolet text-sm">
+                            <div class="text-lg font-bold text-white">Afdillah Safitra</div>
+                            <div class="text-xs font-mono text-accentCyan">Software & Mobile Developer</div>
+                            <div class="text-[11px] text-emerald-400 mt-0.5">Open to new projects & connections</div>
                         </div>
-                    </div>
-                    <div>
-                        <label class="block text-xs font-mono text-gray-400 mb-2">PROJECT TYPE</label>
-                        <select class="w-full px-4 py-3 rounded-xl bg-darkBg border border-gray-800 text-gray-300 focus:outline-none focus:border-accentViolet text-sm">
-                            <option>Website Development</option>
-                            <option>Mobile App Development</option>
-                            <option>Custom Software / System</option>
-                            <option>Collaboration with PT Human Technology Solutions</option>
-                            <option>Job Opportunity</option>
-                        </select>
-                    </div>
-                    <div>
-                        <label class="block text-xs font-mono text-gray-400 mb-2">MESSAGE</label>
-                        <textarea rows="4" required placeholder="Tell me a bit about your project or goals..." class="w-full px-4 py-3 rounded-xl bg-darkBg border border-gray-800 text-white placeholder-gray-600 focus:outline-none focus:border-accentViolet text-sm resize-none"></textarea>
                     </div>
 
-                    <button type="submit" class="w-full py-4 rounded-xl bg-gradient-to-r from-accentViolet to-accentCyan text-white font-semibold shadow-glowViolet hover:shadow-glowCyan transition-all flex items-center justify-center gap-2">
-                        <span>Send Message</span>
-                        <i class="fa-solid fa-paper-plane text-xs"></i>
-                    </button>
-                </form>
+                    <div class="space-y-3 mt-6">
+                        <div class="contact-row">
+                            <span class="contact-row-icon text-accentViolet"><i class="fa-solid fa-envelope"></i></span>
+                            <div class="min-w-0">
+                                <div class="text-[10px] font-mono uppercase text-gray-500">Email</div>
+                                <div id="emailText" class="text-sm font-semibold text-white truncate">afdillah.safitra@gmail.com</div>
+                            </div>
+                        </div>
+                        <div class="contact-row">
+                            <span class="contact-row-icon text-accentCyan"><i class="fa-solid fa-location-dot"></i></span>
+                            <div>
+                                <div class="text-[10px] font-mono uppercase text-gray-500">Location</div>
+                                <div class="text-sm font-semibold text-white">Batam, Kepulauan Riau, Indonesia</div>
+                            </div>
+                        </div>
+                        <div class="contact-row">
+                            <span class="contact-row-icon text-emerald-400"><i class="fa-solid fa-building"></i></span>
+                            <div>
+                                <div class="text-[10px] font-mono uppercase text-gray-500">Company</div>
+                                <a href="https://humantechnologysolutions.com/" target="_blank" rel="noopener" class="text-sm font-semibold text-white hover:text-accentCyan transition-colors">PT Human Technology Solutions</a>
+                            </div>
+                        </div>
+                        <div class="contact-row">
+                            <span class="contact-row-icon text-purple-300"><i class="fa-solid fa-clock"></i></span>
+                            <div>
+                                <div class="text-[10px] font-mono uppercase text-gray-500">Timezone</div>
+                                <div class="text-sm font-semibold text-white">WIB (UTC+7)</div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Message Form -->
+                <div class="lg:col-span-7 contact-form-card">
+                    <div class="flex items-center justify-between gap-4 mb-6">
+                        <div>
+                            <h3 class="text-xl font-bold text-white">Send a Message</h3>
+                            <p class="text-xs text-gray-400 mt-1">Your message opens in your email app, ready to send.</p>
+                        </div>
+                        <span class="hidden sm:flex w-12 h-12 rounded-2xl bg-gradient-to-br from-accentViolet to-accentCyan text-white items-center justify-center shadow-glowViolet"><i class="fa-solid fa-paper-plane"></i></span>
+                    </div>
+                    <form id="contactForm" onsubmit="handleFormSubmit(event)" class="space-y-4">
+                        <div class="grid grid-cols-1 sm:grid-cols-2 gap-4">
+                            <label class="block">
+                                <span class="block text-xs font-mono text-gray-400 mb-2">YOUR NAME</span>
+                                <input name="name" type="text" required placeholder="John Doe" class="contact-input">
+                            </label>
+                            <label class="block">
+                                <span class="block text-xs font-mono text-gray-400 mb-2">EMAIL ADDRESS</span>
+                                <input name="email" type="email" required placeholder="john@example.com" class="contact-input">
+                            </label>
+                        </div>
+                        <div>
+                            <span class="block text-xs font-mono text-gray-400 mb-2">I'M INTERESTED IN</span>
+                            <div class="flex flex-wrap gap-2">
+                                <label class="topic-chip"><input type="radio" name="topic" value="Website Development" checked><span>Website</span></label>
+                                <label class="topic-chip"><input type="radio" name="topic" value="Mobile App Development"><span>Mobile App</span></label>
+                                <label class="topic-chip"><input type="radio" name="topic" value="Custom Software / System"><span>Custom Software</span></label>
+                                <label class="topic-chip"><input type="radio" name="topic" value="Collaboration with PT Human Technology Solutions"><span>Collaboration</span></label>
+                                <label class="topic-chip"><input type="radio" name="topic" value="Just Saying Hi"><span>Just Saying Hi</span></label>
+                            </div>
+                        </div>
+                        <label class="block">
+                            <span class="block text-xs font-mono text-gray-400 mb-2">MESSAGE</span>
+                            <textarea name="message" rows="4" required placeholder="Tell me a bit about your idea or project..." class="contact-input resize-none"></textarea>
+                        </label>
+
+                        <button type="submit" class="w-full py-4 rounded-xl bg-gradient-to-r from-accentViolet to-accentCyan text-white font-semibold shadow-glowViolet hover:shadow-glowCyan hover:-translate-y-0.5 transition-all flex items-center justify-center gap-2">
+                            <span>Send Message</span>
+                            <i class="fa-solid fa-paper-plane text-xs"></i>
+                        </button>
+                    </form>
+                </div>
             </div>
         </section>
 
@@ -1167,7 +1419,7 @@
             showToast('Email address copied to clipboard!');
 
             setTimeout(() => {
-                copyBtnText.innerText = 'Copy';
+                copyBtnText.innerText = 'Tap to copy';
             }, 3000);
         }
 
@@ -1183,11 +1435,17 @@
             }, 3500);
         }
 
-        // Form Submit Handler
+        // Form Submit Handler: opens the visitor's email app with the message pre-filled
         function handleFormSubmit(event) {
             event.preventDefault();
-            showToast('Message sent! I will respond within 24 hours.');
-            event.target.reset();
+            const form = event.target;
+            const data = new FormData(form);
+            const to = document.getElementById('emailText').innerText.trim();
+            const subject = `[Portfolio] ${data.get('topic')} - ${data.get('name')}`;
+            const body = `${data.get('message')}\n\n${data.get('name')}\n${data.get('email')}`;
+            window.location.href = `mailto:${to}?subject=${encodeURIComponent(subject)}&body=${encodeURIComponent(body)}`;
+            showToast('Opening your email app...');
+            form.reset();
         }
 
         // Resume Download Mock
@@ -1195,27 +1453,6 @@
             showToast('CV Download initiated! (Afdillah_Safitra_CV.pdf)');
         }
 
-        // Filter Skills Logic
-        function filterSkills(category, activeBtn) {
-            const buttons = document.querySelectorAll('.skill-btn');
-            const cards = document.querySelectorAll('.skill-card');
-
-            buttons.forEach(btn => {
-                btn.classList.remove('bg-accentViolet', 'text-white');
-                btn.classList.add('bg-darkBg', 'text-gray-400');
-            });
-
-            activeBtn.classList.remove('bg-darkBg', 'text-gray-400');
-            activeBtn.classList.add('bg-accentViolet', 'text-white');
-
-            cards.forEach(card => {
-                if (category === 'all' || card.classList.contains(category)) {
-                    card.style.display = 'flex';
-                } else {
-                    card.style.display = 'none';
-                }
-            });
-        }
     </script>
 </body>
 </html>
