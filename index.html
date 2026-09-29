@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Afdillah Safitra | Social Media Specialist & Visual Creator</title>
+    <title>Afdillah Safitra | Software & Mobile Developer</title>
     <!-- Google Fonts -->
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
@@ -235,6 +235,58 @@
         }
         @media (prefers-reduced-motion: reduce) {
             .float-y, .profile-shine, .glass-chip, .hero-halo, .hero-enter { animation: none; }
+            .fact-card { transition: none; }
+        }
+
+        /* ===== About: 3D Glass Experience Card ===== */
+        .xp-card { aspect-ratio: auto; }
+        .xp-glass {
+            position: relative;
+            overflow: hidden;
+            border-radius: 28px;
+            padding: 20px 0 4px;
+            background: linear-gradient(150deg, rgba(99,102,241,0.22), rgba(22,27,34,0.55) 45%, rgba(34,211,238,0.16));
+            border: 1px solid rgba(255,255,255,0.16);
+            backdrop-filter: blur(20px);
+            -webkit-backdrop-filter: blur(20px);
+            box-shadow: 0 40px 70px -25px rgba(0,0,0,0.8), 0 0 45px -12px rgba(99,102,241,0.5), inset 0 1px 0 rgba(255,255,255,0.25);
+            transform-style: preserve-3d;
+        }
+        .xp-layer { transform: translateZ(var(--z, 0)); }
+        .xp-number {
+            font-family: 'JetBrains Mono', monospace;
+            font-size: 5.5rem;
+            line-height: 1;
+            font-weight: 800;
+            background: linear-gradient(135deg, #FFFFFF 10%, #A5B4FC 50%, #22D3EE 90%);
+            -webkit-background-clip: text;
+            background-clip: text;
+            -webkit-text-fill-color: transparent;
+            filter: drop-shadow(0 10px 25px rgba(99,102,241,0.55));
+        }
+        .xp-number span { font-size: 3rem; vertical-align: top; }
+        .xp-chip-tr { top: -4px; right: -18px; transform: translateZ(90px); animation: chipBob 5s ease-in-out infinite; }
+        .xp-chip-bl { bottom: -18px; left: 28px; transform: translateZ(80px); animation: chipBob 6s ease-in-out -3s infinite; }
+        @media (max-width: 640px) {
+            .xp-chip-tr { right: -6px; }
+        }
+
+        /* Quick fact glass cards */
+        .fact-card {
+            padding: 16px 12px;
+            border-radius: 18px;
+            text-align: center;
+            background: linear-gradient(160deg, rgba(255,255,255,0.07), rgba(255,255,255,0.02));
+            border: 1px solid rgba(255,255,255,0.09);
+            backdrop-filter: blur(12px);
+            -webkit-backdrop-filter: blur(12px);
+            box-shadow: inset 0 1px 0 rgba(255,255,255,0.08);
+            transition: transform 0.3s ease, border-color 0.3s ease, box-shadow 0.3s ease;
+        }
+        .fact-card:hover {
+            transform: translateY(-4px);
+            border-color: rgba(34,211,238,0.4);
+            box-shadow: 0 16px 30px -12px rgba(34,211,238,0.35), inset 0 1px 0 rgba(255,255,255,0.12);
         }
 
         /* ===== Company Profile ===== */
@@ -312,7 +364,7 @@
                 </div>
                 <div class="flex flex-col">
                     <span class="font-bold text-base tracking-tight text-white group-hover:text-accentCyan transition-colors">Afdillah Safitra</span>
-                    <span class="text-xs text-gray-400 font-mono">Specialist & Editor</span>
+                    <span class="text-xs text-gray-400 font-mono">Software & Mobile Dev</span>
                 </div>
             </a>
 
@@ -362,72 +414,18 @@
         <!-- Hero Section -->
         <section class="relative pt-6 md:pt-12 overflow-x-clip">
             <!-- Background Ambient Glow -->
-            <div class="absolute top-1/4 left-1/2 -translate-x-1/2 -translate-y-1/2 w-96 h-96 bg-accentViolet/20 rounded-full blur-[120px] pointer-events-none animate-pulse-glow"></div>
+            <div class="absolute top-1/4 left-1/3 -translate-x-1/2 -translate-y-1/2 w-96 h-96 bg-accentViolet/20 rounded-full blur-[120px] pointer-events-none animate-pulse-glow"></div>
             <div class="absolute top-1/3 right-10 w-80 h-80 bg-accentCyan/15 rounded-full blur-[100px] pointer-events-none"></div>
 
             <div class="grid grid-cols-1 lg:grid-cols-12 gap-12 items-center">
-                <!-- Hero Left Column -->
-                <div class="lg:col-span-7 space-y-6 text-left">
-                    <!-- Status Badge -->
-                    <div class="inline-flex items-center gap-2.5 px-4 py-2 rounded-full glass-card border border-emerald-500/30 text-xs font-mono text-emerald-400">
-                        <span class="relative flex h-2 w-2">
-                            <span class="animate-ping absolute inline-flex h-full w-full rounded-full bg-emerald-400 opacity-75"></span>
-                            <span class="relative inline-flex rounded-full h-2 w-2 bg-emerald-500"></span>
-                        </span>
-                        Available for Freelance & Full-time Roles
-                    </div>
-
-                    <!-- Greeting -->
-                    <p class="text-base sm:text-lg text-gray-300 font-medium">Hi, I'm <span class="font-bold text-white">Afdillah Safitra</span> &mdash; Social Media Specialist & Visual Creator based in Indonesia.</p>
-
-                    <!-- Main Headline -->
-                    <h1 class="text-4xl sm:text-5xl lg:text-6xl font-extrabold tracking-tight leading-[1.15]">
-                        Transforming Content into <span class="text-gradient">High-Converting</span> Visual Experiences.
-                    </h1>
-
-                    <!-- Subtitle -->
-                    <p class="text-gray-400 text-lg sm:text-xl leading-relaxed max-w-2xl font-light">
-                        Social Media Specialist & Visual Creator crafting high-impact video storytelling, boxy apparel branding, and digital growth campaigns that drive real audience engagement.
-                    </p>
-
-                    <!-- CTAs & Resume Download -->
-                    <div class="flex flex-wrap items-center gap-4 pt-4">
-                        <a href="#company" class="px-7 py-3.5 rounded-xl bg-gradient-to-r from-accentViolet to-indigo-600 text-white font-semibold hover:shadow-glowViolet transition-all duration-300 flex items-center gap-2">
-                            <span>Explore My Company</span>
-                            <i class="fa-solid fa-arrow-down text-xs"></i>
-                        </a>
-
-                        <button onclick="downloadResumeMock()" class="px-7 py-3.5 rounded-xl glass-card text-gray-200 hover:text-white hover:border-gray-600 transition-all duration-300 font-semibold flex items-center gap-2">
-                            <i class="fa-solid fa-download text-accentCyan"></i>
-                            <span>Download CV</span>
-                        </button>
-                    </div>
-
-                    <!-- Micro-proof stats -->
-                    <div class="pt-8 grid grid-cols-3 gap-6 border-t border-gray-800/80 max-w-lg">
-                        <div>
-                            <div class="text-2xl sm:text-3xl font-extrabold font-mono text-white">5.2M+</div>
-                            <div class="text-xs text-gray-400 mt-1">Total Views Generated</div>
-                        </div>
-                        <div>
-                            <div class="text-2xl sm:text-3xl font-extrabold font-mono text-accentCyan">18.5%</div>
-                            <div class="text-xs text-gray-400 mt-1">Avg. Engagement Rate</div>
-                        </div>
-                        <div>
-                            <div class="text-2xl sm:text-3xl font-extrabold font-mono text-accentViolet">40+</div>
-                            <div class="text-xs text-gray-400 mt-1">Brand Campaigns</div>
-                        </div>
-                    </div>
-                </div>
-
-                <!-- Hero Right Column / 3D Glass Profile Card -->
+                <!-- Hero Photo Column (first in the DOM so it sits on top on mobile, left on desktop) -->
                 <div class="lg:col-span-5 hero-enter">
                     <div class="tilt-scene relative mx-auto w-full max-w-[400px] pt-10 pb-6 px-4 sm:px-6">
                         <!-- Rotating gradient halo behind the card -->
                         <div class="hero-halo" aria-hidden="true"></div>
 
                         <div class="float-y">
-                            <div id="tiltCard" class="tilt-card relative">
+                            <div data-tilt class="tilt-card relative">
                                 <!-- Layer 0: glass frame + white backdrop -->
                                 <div class="profile-frame">
                                     <div class="profile-backdrop">
@@ -440,26 +438,26 @@
 
                                 <!-- Layer 2: floating glass badges -->
                                 <div class="glass-chip chip-tl">
-                                    <span class="w-8 h-8 rounded-lg bg-accentViolet/25 text-accentViolet flex items-center justify-center"><i class="fa-solid fa-scissors text-xs"></i></span>
+                                    <span class="w-8 h-8 rounded-lg bg-accentViolet/25 text-accentViolet flex items-center justify-center"><i class="fa-solid fa-code text-xs"></i></span>
                                     <div>
-                                        <div class="text-[11px] font-semibold text-white leading-tight">Video Editor</div>
-                                        <div class="text-[9px] font-mono text-gray-400">CapCut · Premiere</div>
+                                        <div class="text-[11px] font-semibold text-white leading-tight">Web Developer</div>
+                                        <div class="text-[9px] font-mono text-gray-400">2+ Years Experience</div>
                                     </div>
                                 </div>
 
                                 <div class="glass-chip chip-tr">
-                                    <i class="fa-solid fa-eye text-accentCyan text-xs"></i>
+                                    <i class="fa-solid fa-building text-accentCyan text-xs"></i>
                                     <div>
-                                        <div class="text-sm font-extrabold font-mono text-white leading-tight">5.2M+</div>
-                                        <div class="text-[9px] font-mono text-gray-400">Views</div>
+                                        <div class="text-sm font-extrabold font-mono text-white leading-tight">Founder</div>
+                                        <div class="text-[9px] font-mono text-gray-400">PT HTS</div>
                                     </div>
                                 </div>
 
                                 <div class="glass-chip chip-mr">
-                                    <span class="w-8 h-8 rounded-lg bg-purple-500/25 text-purple-300 flex items-center justify-center"><i class="fa-solid fa-cube text-xs"></i></span>
+                                    <span class="w-8 h-8 rounded-lg bg-purple-500/25 text-purple-300 flex items-center justify-center"><i class="fa-solid fa-mobile-screen-button text-xs"></i></span>
                                     <div>
-                                        <div class="text-[11px] font-semibold text-white leading-tight">3D Apparel</div>
-                                        <div class="text-[9px] font-mono text-gray-400">Boxy Tee Renders</div>
+                                        <div class="text-[11px] font-semibold text-white leading-tight">Mobile Developer</div>
+                                        <div class="text-[9px] font-mono text-gray-400">Android & iOS Apps</div>
                                     </div>
                                 </div>
 
@@ -468,7 +466,7 @@
                                     <div class="flex items-center justify-between gap-3">
                                         <div>
                                             <h3 class="text-base font-bold text-white leading-tight">Afdillah Safitra</h3>
-                                            <p class="text-[11px] font-mono text-accentCyan">Social Media Specialist & Visual Creator</p>
+                                            <p class="text-[11px] font-mono text-accentCyan">Software & Mobile Developer</p>
                                         </div>
                                         <span class="shrink-0 w-9 h-9 rounded-full bg-emerald-500/20 border border-emerald-400/40 flex items-center justify-center" title="Available for work">
                                             <span class="relative flex h-2.5 w-2.5">
@@ -478,10 +476,64 @@
                                         </span>
                                     </div>
                                     <p class="text-xs text-gray-300 leading-relaxed mt-2">
-                                        I help brands grow through scroll-stopping short-form video, realistic 3D apparel visuals, and data-driven content strategy.
+                                        Founder of PT Human Technology Solutions, building fast, reliable web and mobile apps from Batam, Indonesia.
                                     </p>
                                 </div>
                             </div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Hero Text Column -->
+                <div class="lg:col-span-7 space-y-6 text-left">
+                    <!-- Status Badge -->
+                    <div class="inline-flex items-center gap-2.5 px-4 py-2 rounded-full glass-card border border-emerald-500/30 text-xs font-mono text-emerald-400">
+                        <span class="relative flex h-2 w-2">
+                            <span class="animate-ping absolute inline-flex h-full w-full rounded-full bg-emerald-400 opacity-75"></span>
+                            <span class="relative inline-flex rounded-full h-2 w-2 bg-emerald-500"></span>
+                        </span>
+                        Available for Freelance & Collaboration
+                    </div>
+
+                    <!-- Greeting -->
+                    <p class="text-base sm:text-lg text-gray-300 font-medium">Hi, I'm <span class="font-bold text-white">Afdillah Safitra</span> &mdash; Software & Mobile Developer based in Batam, Indonesia.</p>
+
+                    <!-- Main Headline -->
+                    <h1 class="text-4xl sm:text-5xl lg:text-6xl font-extrabold tracking-tight leading-[1.15]">
+                        Turning Ideas into <span class="text-gradient">Powerful Web & Mobile</span> Experiences.
+                    </h1>
+
+                    <!-- Subtitle -->
+                    <p class="text-gray-400 text-lg sm:text-xl leading-relaxed max-w-2xl font-light">
+                        I design and build websites, mobile apps, and custom software that help businesses work smarter &mdash; clean code, modern interfaces, and solutions that actually solve problems.
+                    </p>
+
+                    <!-- CTAs & Resume Download -->
+                    <div class="flex flex-wrap items-center gap-4 pt-4">
+                        <a href="#company" class="px-7 py-3.5 rounded-xl bg-gradient-to-r from-accentViolet to-indigo-600 text-white font-semibold hover:shadow-glowViolet transition-all duration-300 flex items-center gap-2">
+                            <span>Explore My Company</span>
+                            <i class="fa-solid fa-arrow-down text-xs"></i>
+                        </a>
+                        
+                        <button onclick="downloadResumeMock()" class="px-7 py-3.5 rounded-xl glass-card text-gray-200 hover:text-white hover:border-gray-600 transition-all duration-300 font-semibold flex items-center gap-2">
+                            <i class="fa-solid fa-download text-accentCyan"></i>
+                            <span>Download CV</span>
+                        </button>
+                    </div>
+
+                    <!-- Micro-proof stats -->
+                    <div class="pt-8 grid grid-cols-3 gap-6 border-t border-gray-800/80 max-w-lg">
+                        <div>
+                            <div class="text-2xl sm:text-3xl font-extrabold font-mono text-white">2+</div>
+                            <div class="text-xs text-gray-400 mt-1">Years in Web Development</div>
+                        </div>
+                        <div>
+                            <div class="text-2xl sm:text-3xl font-extrabold font-mono text-accentCyan">Web</div>
+                            <div class="text-xs text-gray-400 mt-1">& Mobile Apps</div>
+                        </div>
+                        <div>
+                            <div class="text-2xl sm:text-3xl font-extrabold font-mono text-accentViolet">PT</div>
+                            <div class="text-xs text-gray-400 mt-1">Company Founder</div>
                         </div>
                     </div>
                 </div>
@@ -490,34 +542,56 @@
 
         <!-- About Me Section -->
         <section id="about" class="reveal grid grid-cols-1 lg:grid-cols-12 gap-10 items-center scroll-mt-28">
-            <!-- Profile Visual -->
+            <!-- 3D Glass Experience Card -->
             <div class="lg:col-span-5">
-                <div class="relative mx-auto max-w-sm">
-                    <div class="absolute -inset-2 bg-gradient-to-br from-accentViolet to-accentCyan rounded-3xl blur-2xl opacity-25 -z-10"></div>
-                    <div class="glass-card rounded-3xl p-3 border border-white/10">
-                        <!-- Replace the initials block with <img src="your-photo.jpg" ...> when ready -->
-                        <div class="aspect-[4/5] rounded-2xl bg-gradient-to-br from-indigo-900/60 via-darkBg to-cyan-900/40 border border-gray-800 flex flex-col items-center justify-center gap-4 relative overflow-hidden">
-                            <div class="absolute inset-0 bg-grid-pattern opacity-60"></div>
-                            <div class="relative w-28 h-28 rounded-full bg-gradient-to-br from-accentViolet to-accentCyan p-[2px]">
-                                <div class="w-full h-full rounded-full bg-darkBg flex items-center justify-center">
-                                    <span class="text-4xl font-extrabold text-gradient">AS</span>
+                <div class="tilt-scene relative mx-auto max-w-sm py-6 px-4">
+                    <div class="absolute inset-8 bg-gradient-to-br from-accentViolet to-accentCyan rounded-3xl blur-3xl opacity-30 -z-10 animate-pulse-glow"></div>
+                    <div data-tilt class="tilt-card xp-card">
+                        <div class="xp-glass">
+                            <div class="profile-shine" aria-hidden="true"></div>
+                            <div class="absolute inset-0 bg-grid-pattern opacity-50"></div>
+
+                            <!-- Big experience number -->
+                            <div class="xp-layer relative text-center pt-4" style="--z: 60px;">
+                                <div class="inline-flex items-center gap-2 px-3 py-1 rounded-full bg-white/5 border border-white/10 text-[10px] font-mono uppercase tracking-widest text-gray-300">
+                                    <i class="fa-solid fa-laptop-code text-accentCyan"></i> Experience
+                                </div>
+                                <div class="xp-number mt-4">2<span>+</span></div>
+                                <div class="text-lg font-bold text-white -mt-1">Years as Web Developer</div>
+                                <p class="text-xs text-gray-400 mt-2 px-6">Building websites, web apps, and mobile applications for real businesses.</p>
+                            </div>
+
+                            <!-- Code snippet -->
+                            <div class="xp-layer relative mx-5 mt-5 p-3 rounded-xl bg-black/40 border border-white/10 font-mono text-[10px] leading-relaxed text-left" style="--z: 40px;">
+                                <div><span class="text-purple-300">const</span> <span class="text-accentCyan">developer</span> = {</div>
+                                <div class="pl-4">name: <span class="text-emerald-300">"Afdillah Safitra"</span>,</div>
+                                <div class="pl-4">role: <span class="text-emerald-300">"Web & Mobile Dev"</span>,</div>
+                                <div class="pl-4">base: <span class="text-emerald-300">"Batam, Kepri"</span>,</div>
+                                <div>};</div>
+                            </div>
+
+                            <!-- Location -->
+                            <div class="xp-layer relative mx-5 mt-4 mb-5 p-3 rounded-xl bg-white/5 border border-white/10 flex items-center gap-3" style="--z: 50px;">
+                                <span class="w-10 h-10 shrink-0 rounded-xl bg-gradient-to-br from-accentViolet to-accentCyan text-white flex items-center justify-center shadow-glowCyan">
+                                    <i class="fa-solid fa-location-dot"></i>
+                                </span>
+                                <div class="text-left">
+                                    <div class="text-[10px] font-mono uppercase text-gray-400">Based in</div>
+                                    <div class="text-sm font-semibold text-white">Batam, Kepulauan Riau</div>
+                                    <div class="text-[11px] text-gray-400">Indonesia &#127470;&#127465;</div>
                                 </div>
                             </div>
-                            <div class="relative text-center">
-                                <p class="font-bold text-white">Afdillah Safitra</p>
-                                <p class="text-xs font-mono text-gray-400">Social Media Specialist</p>
-                            </div>
                         </div>
-                    </div>
 
-                    <!-- Floating Badges -->
-                    <div class="absolute -right-4 top-8 glass-card rounded-xl px-3 py-2 border border-accentCyan/30 text-xs font-mono flex items-center gap-2 shadow-glowCyan">
-                        <i class="fa-solid fa-location-dot text-accentCyan"></i>
-                        <span class="text-gray-200">Indonesia</span>
-                    </div>
-                    <div class="absolute -left-4 bottom-10 glass-card rounded-xl px-3 py-2 border border-accentViolet/30 text-xs font-mono flex items-center gap-2 shadow-glowViolet">
-                        <i class="fa-solid fa-bolt text-accentViolet"></i>
-                        <span class="text-gray-200">3+ Years Creating</span>
+                        <!-- Floating chips -->
+                        <div class="glass-chip xp-chip-tr">
+                            <i class="fa-solid fa-building text-accentCyan text-xs"></i>
+                            <span class="text-[11px] font-semibold text-white">Founder, PT HTS</span>
+                        </div>
+                        <div class="glass-chip xp-chip-bl">
+                            <i class="fa-solid fa-mobile-screen-button text-purple-300 text-xs"></i>
+                            <span class="text-[11px] font-semibold text-white">Mobile Developer</span>
+                        </div>
                     </div>
                 </div>
             </div>
@@ -526,36 +600,36 @@
             <div class="lg:col-span-7 space-y-6">
                 <div>
                     <span class="text-xs font-mono uppercase tracking-widest text-accentCyan">About Me</span>
-                    <h2 class="text-3xl sm:text-4xl font-bold text-white mt-1">Storyteller at Heart, <span class="text-accent-gradient">Data-Driven</span> by Habit.</h2>
+                    <h2 class="text-3xl sm:text-4xl font-bold text-white mt-1">Developer by Craft, <span class="text-accent-gradient">Founder</span> by Vision.</h2>
                 </div>
                 <p class="text-gray-400 leading-relaxed">
-                    I help brands turn scrolling into stopping. My work sits at the intersection of short-form video editing, apparel visualization, and social media strategy &mdash; blending creative instinct with performance metrics to build content that people actually watch, share, and buy from.
+                    I'm <span class="text-white font-semibold">Afdillah Safitra</span>, a software and mobile developer from Batam, Kepulauan Riau. I'm the founder of <a href="https://humantechnologysolutions.com/" target="_blank" rel="noopener" class="text-accentCyan hover:underline">PT Human Technology Solutions</a>, a company focused on building digital solutions &mdash; websites, web applications, and mobile apps &mdash; that help businesses grow.
                 </p>
                 <p class="text-gray-400 leading-relaxed">
-                    From scripting the first 1.5 seconds of a reel to rendering a boxy tee before it's ever sampled, I care about every detail that moves the needle for a brand.
+                    Alongside leading my company, I currently work at <span class="text-white font-semibold">CV Dirawan Indo Nusantara</span> and I'm studying <span class="text-white font-semibold">Occupational Health & Safety (K3)</span> at <span class="text-white font-semibold">Universitas Ibnu Sina</span>. That mix of technology, business, and safety teaches me to build software that is practical, reliable, and made for the people who use it.
                 </p>
 
                 <!-- Quick Facts Grid -->
                 <div class="grid grid-cols-2 sm:grid-cols-4 gap-3 pt-2">
-                    <div class="p-4 rounded-2xl bg-darkBg/80 border border-gray-800 text-center">
-                        <i class="fa-solid fa-video text-accentViolet text-lg"></i>
-                        <div class="text-lg font-bold font-mono text-white mt-2">300+</div>
-                        <div class="text-[10px] text-gray-400">Videos Edited</div>
+                    <div class="fact-card">
+                        <i class="fa-solid fa-code text-accentViolet text-lg"></i>
+                        <div class="text-lg font-bold font-mono text-white mt-2">2+ Years</div>
+                        <div class="text-[10px] text-gray-400">Web Development</div>
                     </div>
-                    <div class="p-4 rounded-2xl bg-darkBg/80 border border-gray-800 text-center">
-                        <i class="fa-solid fa-shirt text-purple-400 text-lg"></i>
-                        <div class="text-lg font-bold font-mono text-white mt-2">50+</div>
-                        <div class="text-[10px] text-gray-400">3D Mockups</div>
+                    <div class="fact-card">
+                        <i class="fa-solid fa-building text-accentCyan text-lg"></i>
+                        <div class="text-lg font-bold font-mono text-white mt-2">Founder</div>
+                        <div class="text-[10px] text-gray-400">PT Human Technology Solutions</div>
                     </div>
-                    <div class="p-4 rounded-2xl bg-darkBg/80 border border-gray-800 text-center">
-                        <i class="fa-solid fa-handshake text-emerald-400 text-lg"></i>
-                        <div class="text-lg font-bold font-mono text-white mt-2">25+</div>
-                        <div class="text-[10px] text-gray-400">Happy Clients</div>
+                    <div class="fact-card">
+                        <i class="fa-solid fa-briefcase text-emerald-400 text-lg"></i>
+                        <div class="text-lg font-bold font-mono text-white mt-2">Working</div>
+                        <div class="text-[10px] text-gray-400">CV Dirawan Indo Nusantara</div>
                     </div>
-                    <div class="p-4 rounded-2xl bg-darkBg/80 border border-gray-800 text-center">
-                        <i class="fa-solid fa-language text-accentCyan text-lg"></i>
-                        <div class="text-lg font-bold font-mono text-white mt-2">ID / EN</div>
-                        <div class="text-[10px] text-gray-400">Languages</div>
+                    <div class="fact-card">
+                        <i class="fa-solid fa-graduation-cap text-purple-300 text-lg"></i>
+                        <div class="text-lg font-bold font-mono text-white mt-2">K3 Student</div>
+                        <div class="text-[10px] text-gray-400">Universitas Ibnu Sina</div>
                     </div>
                 </div>
             </div>
@@ -604,11 +678,12 @@
                                     <div class="text-xs font-mono text-gray-400 mt-1">humantechnologysolutions.com</div>
                                 </div>
                             </div>
-                            <!-- Live website snapshot (swap for a local screenshot, e.g. assets/company-preview.webp, if preferred) -->
-                            <img src="https://image.thum.io/get/width/1200/crop/750/https://humantechnologysolutions.com/"
-                                 alt="Homepage of PT Human Technology Solutions"
+                            <!-- Company profile image: put your photo at assets/company-profile.webp.
+                                 If it's missing, a live snapshot of the website is used, then the logo card above. -->
+                            <img src="assets/company-profile.webp"
+                                 alt="PT Human Technology Solutions"
                                  loading="lazy"
-                                 onerror="this.remove()"
+                                 onerror="if (!this.dataset.fallback) { this.dataset.fallback = '1'; this.src = 'https://image.thum.io/get/width/1200/crop/750/https://humantechnologysolutions.com/'; } else { this.remove(); }"
                                  class="relative w-full h-full object-cover object-top transition-transform duration-[1.5s] ease-out group-hover:scale-105">
                             <div class="company-shine" aria-hidden="true"></div>
                             <div class="absolute inset-0 bg-gradient-to-t from-darkBg/90 via-transparent to-transparent"></div>
@@ -636,14 +711,14 @@
                                 <div>
                                     <h3 class="text-xl font-bold text-white leading-tight">PT Human Technology Solutions</h3>
                                     <span class="inline-flex items-center gap-1.5 mt-1.5 px-2.5 py-1 rounded-md bg-accentViolet/20 text-accentViolet text-[10px] font-mono font-semibold">
-                                        <i class="fa-solid fa-briefcase"></i> My Company
+                                        <i class="fa-solid fa-crown"></i> Founded by Afdillah Safitra
                                     </span>
                                 </div>
                             </div>
 
                             <!-- Company description: replace with the official profile text from the website -->
                             <p class="text-sm text-gray-400 leading-relaxed">
-                                Human Technology Solutions brings people and technology together &mdash; helping businesses grow with practical digital solutions, creative content, and a human-first approach.
+                                PT Human Technology Solutions is the company I founded to bring people and technology together &mdash; building websites, web applications, and mobile apps that help businesses work smarter and grow.
                             </p>
 
                             <div class="grid grid-cols-3 gap-3">
@@ -682,52 +757,52 @@
                     <span class="text-xs font-mono uppercase tracking-widest text-accentCyan">What I Offer</span>
                     <h2 class="text-3xl sm:text-4xl font-bold text-white mt-1">Services Built for Growth</h2>
                 </div>
-                <p class="text-sm text-gray-400 max-w-md">Flexible packages for brands, creators, and teams &mdash; from one-off edits to full monthly retainers.</p>
+                <p class="text-sm text-gray-400 max-w-md">From company websites to mobile apps and custom systems &mdash; built to fit how your business actually works.</p>
             </div>
 
             <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-6">
                 <div class="group glass-card rounded-3xl p-6 border border-gray-800 hover:border-accentViolet/50 hover:-translate-y-1 transition-all duration-300">
                     <div class="w-12 h-12 rounded-2xl bg-accentViolet/20 text-accentViolet flex items-center justify-center text-xl group-hover:scale-110 transition-transform">
-                        <i class="fa-solid fa-clapperboard"></i>
+                        <i class="fa-solid fa-globe"></i>
                     </div>
-                    <h3 class="text-base font-bold text-white mt-5">Short-Form Video Editing</h3>
-                    <p class="text-xs text-gray-400 mt-2 leading-relaxed">Reels, TikTok & Shorts with punchy hooks, captions, sound design, and trend-aware pacing.</p>
+                    <h3 class="text-base font-bold text-white mt-5">Web Development</h3>
+                    <p class="text-xs text-gray-400 mt-2 leading-relaxed">Company profiles, landing pages, and web applications that are fast, responsive, and easy to manage.</p>
                     <ul class="mt-4 space-y-1.5 text-xs text-gray-300">
-                        <li><i class="fa-solid fa-check text-accentViolet mr-2"></i>Hook-first editing</li>
-                        <li><i class="fa-solid fa-check text-accentViolet mr-2"></i>Auto captions & motion text</li>
+                        <li><i class="fa-solid fa-check text-accentViolet mr-2"></i>Responsive on every device</li>
+                        <li><i class="fa-solid fa-check text-accentViolet mr-2"></i>SEO-friendly structure</li>
                     </ul>
                 </div>
                 <div class="group glass-card rounded-3xl p-6 border border-gray-800 hover:border-accentCyan/50 hover:-translate-y-1 transition-all duration-300">
                     <div class="w-12 h-12 rounded-2xl bg-cyan-500/20 text-accentCyan flex items-center justify-center text-xl group-hover:scale-110 transition-transform">
-                        <i class="fa-solid fa-hashtag"></i>
+                        <i class="fa-solid fa-mobile-screen-button"></i>
                     </div>
-                    <h3 class="text-base font-bold text-white mt-5">Social Media Management</h3>
-                    <p class="text-xs text-gray-400 mt-2 leading-relaxed">Content calendars, posting, community engagement, and monthly performance reports.</p>
+                    <h3 class="text-base font-bold text-white mt-5">Mobile App Development</h3>
+                    <p class="text-xs text-gray-400 mt-2 leading-relaxed">Android and iOS apps with clean interfaces and smooth performance for your customers or team.</p>
                     <ul class="mt-4 space-y-1.5 text-xs text-gray-300">
-                        <li><i class="fa-solid fa-check text-accentCyan mr-2"></i>Monthly content plan</li>
-                        <li><i class="fa-solid fa-check text-accentCyan mr-2"></i>Analytics & insights</li>
+                        <li><i class="fa-solid fa-check text-accentCyan mr-2"></i>Cross-platform apps</li>
+                        <li><i class="fa-solid fa-check text-accentCyan mr-2"></i>API integration</li>
                     </ul>
                 </div>
                 <div class="group glass-card rounded-3xl p-6 border border-gray-800 hover:border-purple-500/50 hover:-translate-y-1 transition-all duration-300">
                     <div class="w-12 h-12 rounded-2xl bg-purple-500/20 text-purple-300 flex items-center justify-center text-xl group-hover:scale-110 transition-transform">
-                        <i class="fa-solid fa-cube"></i>
+                        <i class="fa-solid fa-gears"></i>
                     </div>
-                    <h3 class="text-base font-bold text-white mt-5">3D Apparel Mockups</h3>
-                    <p class="text-xs text-gray-400 mt-2 leading-relaxed">Realistic garment renders for pre-orders, catalogs, and launch campaigns &mdash; before sampling.</p>
+                    <h3 class="text-base font-bold text-white mt-5">Custom Software</h3>
+                    <p class="text-xs text-gray-400 mt-2 leading-relaxed">Internal systems and dashboards tailored to your workflow &mdash; from data management to reporting.</p>
                     <ul class="mt-4 space-y-1.5 text-xs text-gray-300">
-                        <li><i class="fa-solid fa-check text-purple-300 mr-2"></i>Boxy & oversized fits</li>
-                        <li><i class="fa-solid fa-check text-purple-300 mr-2"></i>Multi-angle renders</li>
+                        <li><i class="fa-solid fa-check text-purple-300 mr-2"></i>Admin dashboards</li>
+                        <li><i class="fa-solid fa-check text-purple-300 mr-2"></i>Database design</li>
                     </ul>
                 </div>
                 <div class="group glass-card rounded-3xl p-6 border border-gray-800 hover:border-emerald-500/50 hover:-translate-y-1 transition-all duration-300">
                     <div class="w-12 h-12 rounded-2xl bg-emerald-500/20 text-emerald-300 flex items-center justify-center text-xl group-hover:scale-110 transition-transform">
-                        <i class="fa-solid fa-bullhorn"></i>
+                        <i class="fa-solid fa-screwdriver-wrench"></i>
                     </div>
-                    <h3 class="text-base font-bold text-white mt-5">Ad Creative & Copy</h3>
-                    <p class="text-xs text-gray-400 mt-2 leading-relaxed">Scroll-stopping ad creatives and scripts for Meta & TikTok performance campaigns.</p>
+                    <h3 class="text-base font-bold text-white mt-5">Maintenance & Support</h3>
+                    <p class="text-xs text-gray-400 mt-2 leading-relaxed">Keeping your website and apps secure, up to date, and running smoothly after launch.</p>
                     <ul class="mt-4 space-y-1.5 text-xs text-gray-300">
-                        <li><i class="fa-solid fa-check text-emerald-300 mr-2"></i>A/B hook variations</li>
-                        <li><i class="fa-solid fa-check text-emerald-300 mr-2"></i>Conversion-focused copy</li>
+                        <li><i class="fa-solid fa-check text-emerald-300 mr-2"></i>Bug fixes & updates</li>
+                        <li><i class="fa-solid fa-check text-emerald-300 mr-2"></i>Hosting & deployment</li>
                     </ul>
                 </div>
             </div>
@@ -740,28 +815,28 @@
                         <div class="text-3xl font-extrabold font-mono text-accent-gradient">01</div>
                         <div>
                             <h4 class="font-semibold text-white text-sm">Discovery</h4>
-                            <p class="text-xs text-gray-400 mt-1">Understand your brand, audience, and goals.</p>
+                            <p class="text-xs text-gray-400 mt-1">Understand your business, users, and goals.</p>
                         </div>
                     </div>
                     <div class="flex gap-4">
                         <div class="text-3xl font-extrabold font-mono text-accent-gradient">02</div>
                         <div>
-                            <h4 class="font-semibold text-white text-sm">Strategy</h4>
-                            <p class="text-xs text-gray-400 mt-1">Map content pillars, hooks, and a posting plan.</p>
+                            <h4 class="font-semibold text-white text-sm">Design & Plan</h4>
+                            <p class="text-xs text-gray-400 mt-1">Map features, flows, and the right tech stack.</p>
                         </div>
                     </div>
                     <div class="flex gap-4">
                         <div class="text-3xl font-extrabold font-mono text-accent-gradient">03</div>
                         <div>
-                            <h4 class="font-semibold text-white text-sm">Production</h4>
-                            <p class="text-xs text-gray-400 mt-1">Edit, design, and render with fast revisions.</p>
+                            <h4 class="font-semibold text-white text-sm">Develop & Test</h4>
+                            <p class="text-xs text-gray-400 mt-1">Build in iterations with regular progress updates.</p>
                         </div>
                     </div>
                     <div class="flex gap-4">
                         <div class="text-3xl font-extrabold font-mono text-accent-gradient">04</div>
                         <div>
-                            <h4 class="font-semibold text-white text-sm">Analyze & Scale</h4>
-                            <p class="text-xs text-gray-400 mt-1">Track results and double down on what works.</p>
+                            <h4 class="font-semibold text-white text-sm">Launch & Support</h4>
+                            <p class="text-xs text-gray-400 mt-1">Deploy, monitor, and keep improving.</p>
                         </div>
                     </div>
                 </div>
@@ -772,8 +847,8 @@
         <section id="experience" class="reveal grid grid-cols-1 lg:grid-cols-12 gap-10 scroll-mt-28">
             <div class="lg:col-span-4 space-y-3">
                 <span class="text-xs font-mono uppercase tracking-widest text-accentCyan">Journey</span>
-                <h2 class="text-3xl sm:text-4xl font-bold text-white">Experience & Milestones</h2>
-                <p class="text-sm text-gray-400">A snapshot of the roles and collaborations that shaped how I create and grow brands.</p>
+                <h2 class="text-3xl sm:text-4xl font-bold text-white">Experience & Education</h2>
+                <p class="text-sm text-gray-400">The roles and studies that shape how I build software and lead my company.</p>
             </div>
 
             <div class="lg:col-span-8">
@@ -782,33 +857,44 @@
                         <span class="absolute -left-[9px] top-1.5 w-4 h-4 rounded-full bg-gradient-to-br from-accentViolet to-accentCyan ring-4 ring-darkBg"></span>
                         <div class="glass-card rounded-2xl p-5 border border-gray-800 hover:border-accentViolet/40 transition-colors">
                             <div class="flex flex-wrap items-center justify-between gap-2">
-                                <h3 class="font-bold text-white">Social Media Specialist</h3>
-                                <span class="px-2.5 py-1 rounded-md bg-accentViolet/20 text-accentViolet text-[10px] font-mono">2024 &ndash; Present</span>
+                                <h3 class="font-bold text-white">Founder</h3>
+                                <span class="px-2.5 py-1 rounded-md bg-accentViolet/20 text-accentViolet text-[10px] font-mono">Present</span>
                             </div>
-                            <p class="text-xs font-mono text-accentCyan mt-1">Freelance &middot; Streetwear & Lifestyle Brands</p>
-                            <p class="text-sm text-gray-400 mt-3">Leading content strategy and short-form production for apparel brands, growing reach and turning engagement into sales.</p>
+                            <a href="https://humantechnologysolutions.com/" target="_blank" rel="noopener" class="text-xs font-mono text-accentCyan mt-1 inline-flex items-center gap-1.5 hover:underline">PT Human Technology Solutions <i class="fa-solid fa-arrow-up-right-from-square text-[9px]"></i></a>
+                            <p class="text-sm text-gray-400 mt-3">Founded and lead a technology company delivering websites, web applications, and mobile apps for businesses.</p>
+                        </div>
+                    </li>
+                    <li class="pl-8 relative">
+                        <span class="absolute -left-[9px] top-1.5 w-4 h-4 rounded-full bg-gradient-to-br from-emerald-400 to-accentCyan ring-4 ring-darkBg"></span>
+                        <div class="glass-card rounded-2xl p-5 border border-gray-800 hover:border-emerald-500/40 transition-colors">
+                            <div class="flex flex-wrap items-center justify-between gap-2">
+                                <h3 class="font-bold text-white">Currently Working</h3>
+                                <span class="px-2.5 py-1 rounded-md bg-emerald-500/20 text-emerald-300 text-[10px] font-mono">Present</span>
+                            </div>
+                            <p class="text-xs font-mono text-accentCyan mt-1">CV Dirawan Indo Nusantara</p>
+                            <p class="text-sm text-gray-400 mt-3">Working professionally while growing my company and continuing my studies.</p>
                         </div>
                     </li>
                     <li class="pl-8 relative">
                         <span class="absolute -left-[9px] top-1.5 w-4 h-4 rounded-full bg-gray-700 ring-4 ring-darkBg"></span>
                         <div class="glass-card rounded-2xl p-5 border border-gray-800 hover:border-accentCyan/40 transition-colors">
                             <div class="flex flex-wrap items-center justify-between gap-2">
-                                <h3 class="font-bold text-white">Video Editor & Content Creator</h3>
-                                <span class="px-2.5 py-1 rounded-md bg-gray-800 text-gray-300 text-[10px] font-mono">2023 &ndash; 2024</span>
+                                <h3 class="font-bold text-white">Web & Mobile Developer</h3>
+                                <span class="px-2.5 py-1 rounded-md bg-gray-800 text-gray-300 text-[10px] font-mono">2+ Years</span>
                             </div>
-                            <p class="text-xs font-mono text-accentCyan mt-1">Agency & Creator Collaborations</p>
-                            <p class="text-sm text-gray-400 mt-3">Edited high-retention reels and TikToks for creators and small businesses, building a library of proven hook formats.</p>
+                            <p class="text-xs font-mono text-accentCyan mt-1">Freelance & Company Projects</p>
+                            <p class="text-sm text-gray-400 mt-3">Building responsive websites, web applications, and mobile apps &mdash; from planning and UI to deployment and maintenance.</p>
                         </div>
                     </li>
                     <li class="pl-8 relative">
                         <span class="absolute -left-[9px] top-1.5 w-4 h-4 rounded-full bg-gray-700 ring-4 ring-darkBg"></span>
                         <div class="glass-card rounded-2xl p-5 border border-gray-800 hover:border-purple-500/40 transition-colors">
                             <div class="flex flex-wrap items-center justify-between gap-2">
-                                <h3 class="font-bold text-white">3D Apparel & Graphic Designer</h3>
-                                <span class="px-2.5 py-1 rounded-md bg-gray-800 text-gray-300 text-[10px] font-mono">2022 &ndash; 2023</span>
+                                <h3 class="font-bold text-white">Occupational Health & Safety (K3)</h3>
+                                <span class="px-2.5 py-1 rounded-md bg-purple-500/20 text-purple-300 text-[10px] font-mono">Studying</span>
                             </div>
-                            <p class="text-xs font-mono text-accentCyan mt-1">Independent Projects</p>
-                            <p class="text-sm text-gray-400 mt-3">Started designing boxy tee mockups and brand visuals, learning SketchUp, Photoshop, and 3D garment rendering.</p>
+                            <p class="text-xs font-mono text-accentCyan mt-1"><i class="fa-solid fa-graduation-cap mr-1"></i>Universitas Ibnu Sina</p>
+                            <p class="text-sm text-gray-400 mt-3">Currently pursuing a degree in K3 (Keselamatan dan Kesehatan Kerja).</p>
                         </div>
                     </li>
                 </ol>
@@ -819,106 +905,80 @@
         <section id="skills" class="reveal space-y-8 glass-card rounded-3xl p-8 sm:p-12 border border-gray-800 scroll-mt-28">
             <div class="max-w-2xl">
                 <span class="text-xs font-mono uppercase tracking-widest text-accentCyan">Core Capabilities</span>
-                <h2 class="text-3xl font-bold text-white mt-1">Skills & Production Stack</h2>
-                <p class="text-sm text-gray-400 mt-2">A versatile mix of creative direction, visual editing, and strategy tools tailored for modern digital brands.</p>
+                <h2 class="text-3xl font-bold text-white mt-1">Skills & Tech Stack</h2>
+                <p class="text-sm text-gray-400 mt-2">The languages, frameworks, and tools I use to design, build, and ship web and mobile products.</p>
             </div>
 
             <!-- Category Filter Buttons -->
             <div class="flex flex-wrap gap-2 pt-2" id="skillFilters">
                 <button onclick="filterSkills('all', this)" class="skill-btn active px-4 py-2 rounded-xl text-xs font-mono font-semibold bg-accentViolet text-white transition-all">All Skills</button>
-                <button onclick="filterSkills('video', this)" class="skill-btn px-4 py-2 rounded-xl text-xs font-mono font-semibold bg-darkBg text-gray-400 hover:text-white border border-gray-800 transition-all">Video & Motion</button>
-                <button onclick="filterSkills('design', this)" class="skill-btn px-4 py-2 rounded-xl text-xs font-mono font-semibold bg-darkBg text-gray-400 hover:text-white border border-gray-800 transition-all">3D & Visual Design</button>
-                <button onclick="filterSkills('strategy', this)" class="skill-btn px-4 py-2 rounded-xl text-xs font-mono font-semibold bg-darkBg text-gray-400 hover:text-white border border-gray-800 transition-all">Strategy & Growth</button>
+                <button onclick="filterSkills('web', this)" class="skill-btn px-4 py-2 rounded-xl text-xs font-mono font-semibold bg-darkBg text-gray-400 hover:text-white border border-gray-800 transition-all">Web</button>
+                <button onclick="filterSkills('mobile', this)" class="skill-btn px-4 py-2 rounded-xl text-xs font-mono font-semibold bg-darkBg text-gray-400 hover:text-white border border-gray-800 transition-all">Mobile</button>
+                <button onclick="filterSkills('tools', this)" class="skill-btn px-4 py-2 rounded-xl text-xs font-mono font-semibold bg-darkBg text-gray-400 hover:text-white border border-gray-800 transition-all">Backend & Tools</button>
             </div>
 
             <!-- Skill Chips Grid -->
             <div class="grid grid-cols-2 sm:grid-cols-3 md:grid-cols-4 lg:grid-cols-6 gap-4 pt-4" id="skillGrid">
-                <!-- Skill 1 -->
-                <div class="skill-card video p-4 rounded-2xl bg-darkBg/80 border border-gray-800 flex flex-col items-center justify-center text-center gap-2 hover:border-accentViolet transition-colors group">
-                    <i class="fa-solid fa-scissors text-2xl text-accentViolet group-hover:scale-110 transition-transform"></i>
-                    <span class="text-xs font-semibold text-gray-200">CapCut Pro</span>
-                    <span class="text-[10px] font-mono text-gray-500">Short-Form Master</span>
+                <div class="skill-card web p-4 rounded-2xl bg-darkBg/80 border border-gray-800 flex flex-col items-center justify-center text-center gap-2 hover:border-accentViolet transition-colors group">
+                    <i class="fa-brands fa-html5 text-2xl text-orange-400 group-hover:scale-110 transition-transform"></i>
+                    <span class="text-xs font-semibold text-gray-200">HTML & CSS</span>
+                    <span class="text-[10px] font-mono text-gray-500">Responsive UI</span>
                 </div>
-                <!-- Skill 2 -->
-                <div class="skill-card video p-4 rounded-2xl bg-darkBg/80 border border-gray-800 flex flex-col items-center justify-center text-center gap-2 hover:border-accentViolet transition-colors group">
-                    <i class="fa-solid fa-film text-2xl text-indigo-400 group-hover:scale-110 transition-transform"></i>
-                    <span class="text-xs font-semibold text-gray-200">Premiere Pro</span>
-                    <span class="text-[10px] font-mono text-gray-500">Long-form & Color</span>
+                <div class="skill-card web p-4 rounded-2xl bg-darkBg/80 border border-gray-800 flex flex-col items-center justify-center text-center gap-2 hover:border-accentViolet transition-colors group">
+                    <i class="fa-brands fa-js text-2xl text-yellow-300 group-hover:scale-110 transition-transform"></i>
+                    <span class="text-xs font-semibold text-gray-200">JavaScript</span>
+                    <span class="text-[10px] font-mono text-gray-500">Interactive Web</span>
                 </div>
-                <!-- Skill 3 -->
-                <div class="skill-card design p-4 rounded-2xl bg-darkBg/80 border border-gray-800 flex flex-col items-center justify-center text-center gap-2 hover:border-accentCyan transition-colors group">
-                    <i class="fa-solid fa-palette text-2xl text-accentCyan group-hover:scale-110 transition-transform"></i>
-                    <span class="text-xs font-semibold text-gray-200">Photoshop</span>
-                    <span class="text-[10px] font-mono text-gray-500">Poster & Branding</span>
+                <div class="skill-card web p-4 rounded-2xl bg-darkBg/80 border border-gray-800 flex flex-col items-center justify-center text-center gap-2 hover:border-accentViolet transition-colors group">
+                    <i class="fa-brands fa-react text-2xl text-accentCyan group-hover:scale-110 transition-transform"></i>
+                    <span class="text-xs font-semibold text-gray-200">React</span>
+                    <span class="text-[10px] font-mono text-gray-500">Frontend Apps</span>
                 </div>
-                <!-- Skill 4 -->
-                <div class="skill-card design p-4 rounded-2xl bg-darkBg/80 border border-gray-800 flex flex-col items-center justify-center text-center gap-2 hover:border-accentCyan transition-colors group">
-                    <i class="fa-solid fa-cube text-2xl text-purple-400 group-hover:scale-110 transition-transform"></i>
-                    <span class="text-xs font-semibold text-gray-200">SketchUp & 3D</span>
-                    <span class="text-[10px] font-mono text-gray-500">Apparel Renders</span>
+                <div class="skill-card mobile p-4 rounded-2xl bg-darkBg/80 border border-gray-800 flex flex-col items-center justify-center text-center gap-2 hover:border-accentCyan transition-colors group">
+                    <i class="fa-solid fa-mobile-screen-button text-2xl text-sky-400 group-hover:scale-110 transition-transform"></i>
+                    <span class="text-xs font-semibold text-gray-200">Flutter</span>
+                    <span class="text-[10px] font-mono text-gray-500">Cross-platform</span>
                 </div>
-                <!-- Skill 5 -->
-                <div class="skill-card strategy p-4 rounded-2xl bg-darkBg/80 border border-gray-800 flex flex-col items-center justify-center text-center gap-2 hover:border-emerald-400 transition-colors group">
-                    <i class="fa-solid fa-bullseye text-2xl text-emerald-400 group-hover:scale-110 transition-transform"></i>
-                    <span class="text-xs font-semibold text-gray-200">Content Strategy</span>
-                    <span class="text-[10px] font-mono text-gray-500">Viral Hooks</span>
+                <div class="skill-card mobile p-4 rounded-2xl bg-darkBg/80 border border-gray-800 flex flex-col items-center justify-center text-center gap-2 hover:border-accentCyan transition-colors group">
+                    <i class="fa-brands fa-android text-2xl text-emerald-400 group-hover:scale-110 transition-transform"></i>
+                    <span class="text-xs font-semibold text-gray-200">Android</span>
+                    <span class="text-[10px] font-mono text-gray-500">Native Apps</span>
                 </div>
-                <!-- Skill 6 -->
-                <div class="skill-card strategy p-4 rounded-2xl bg-darkBg/80 border border-gray-800 flex flex-col items-center justify-center text-center gap-2 hover:border-emerald-400 transition-colors group">
-                    <i class="fa-solid fa-chart-column text-2xl text-emerald-400 group-hover:scale-110 transition-transform"></i>
-                    <span class="text-xs font-semibold text-gray-200">Meta & TikTok Ads</span>
-                    <span class="text-[10px] font-mono text-gray-500">Performance Ads</span>
+                <div class="skill-card tools p-4 rounded-2xl bg-darkBg/80 border border-gray-800 flex flex-col items-center justify-center text-center gap-2 hover:border-emerald-400 transition-colors group">
+                    <i class="fa-brands fa-php text-2xl text-indigo-300 group-hover:scale-110 transition-transform"></i>
+                    <span class="text-xs font-semibold text-gray-200">PHP & Laravel</span>
+                    <span class="text-[10px] font-mono text-gray-500">Backend & API</span>
                 </div>
-            </div>
-        </section>
-
-        <!-- Testimonials Section -->
-        <section id="testimonials" class="reveal space-y-8">
-            <div class="text-center max-w-2xl mx-auto">
-                <span class="text-xs font-mono uppercase tracking-widest text-accentCyan">Kind Words</span>
-                <h2 class="text-3xl sm:text-4xl font-bold text-white mt-1">What Clients Say</h2>
-            </div>
-
-            <div class="grid grid-cols-1 md:grid-cols-3 gap-6">
-                <figure class="glass-card rounded-3xl p-6 border border-gray-800 hover:border-accentViolet/40 transition-colors flex flex-col justify-between">
-                    <div>
-                        <div class="text-amber-400 text-xs space-x-0.5"><i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i></div>
-                        <blockquote class="text-sm text-gray-300 mt-4 leading-relaxed">"Our reels went from a few hundred views to consistently hitting 50K+. The hooks and pacing are on another level."</blockquote>
-                    </div>
-                    <figcaption class="flex items-center gap-3 mt-6 pt-4 border-t border-gray-800">
-                        <div class="w-10 h-10 rounded-full bg-accentViolet/20 text-accentViolet flex items-center justify-center font-bold text-sm">RS</div>
-                        <div>
-                            <div class="text-sm font-semibold text-white">Brand Owner</div>
-                            <div class="text-[10px] font-mono text-gray-500">Local Streetwear Label</div>
-                        </div>
-                    </figcaption>
-                </figure>
-                <figure class="glass-card rounded-3xl p-6 border border-gray-800 hover:border-accentCyan/40 transition-colors flex flex-col justify-between">
-                    <div>
-                        <div class="text-amber-400 text-xs space-x-0.5"><i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i></div>
-                        <blockquote class="text-sm text-gray-300 mt-4 leading-relaxed">"The 3D mockups let us open pre-orders weeks before production. Saved us time and a lot of sampling cost."</blockquote>
-                    </div>
-                    <figcaption class="flex items-center gap-3 mt-6 pt-4 border-t border-gray-800">
-                        <div class="w-10 h-10 rounded-full bg-cyan-500/20 text-accentCyan flex items-center justify-center font-bold text-sm">DP</div>
-                        <div>
-                            <div class="text-sm font-semibold text-white">Product Lead</div>
-                            <div class="text-[10px] font-mono text-gray-500">Apparel Startup</div>
-                        </div>
-                    </figcaption>
-                </figure>
-                <figure class="glass-card rounded-3xl p-6 border border-gray-800 hover:border-emerald-500/40 transition-colors flex flex-col justify-between">
-                    <div>
-                        <div class="text-amber-400 text-xs space-x-0.5"><i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i></div>
-                        <blockquote class="text-sm text-gray-300 mt-4 leading-relaxed">"Fast, communicative, and genuinely strategic. Every video came with a reason behind it, not just nice edits."</blockquote>
-                    </div>
-                    <figcaption class="flex items-center gap-3 mt-6 pt-4 border-t border-gray-800">
-                        <div class="w-10 h-10 rounded-full bg-emerald-500/20 text-emerald-300 flex items-center justify-center font-bold text-sm">AN</div>
-                        <div>
-                            <div class="text-sm font-semibold text-white">Content Creator</div>
-                            <div class="text-[10px] font-mono text-gray-500">Lifestyle Niche</div>
-                        </div>
-                    </figcaption>
-                </figure>
+                <div class="skill-card tools p-4 rounded-2xl bg-darkBg/80 border border-gray-800 flex flex-col items-center justify-center text-center gap-2 hover:border-emerald-400 transition-colors group">
+                    <i class="fa-solid fa-database text-2xl text-accentViolet group-hover:scale-110 transition-transform"></i>
+                    <span class="text-xs font-semibold text-gray-200">MySQL</span>
+                    <span class="text-[10px] font-mono text-gray-500">Database</span>
+                </div>
+                <div class="skill-card tools p-4 rounded-2xl bg-darkBg/80 border border-gray-800 flex flex-col items-center justify-center text-center gap-2 hover:border-emerald-400 transition-colors group">
+                    <i class="fa-brands fa-git-alt text-2xl text-orange-500 group-hover:scale-110 transition-transform"></i>
+                    <span class="text-xs font-semibold text-gray-200">Git & GitHub</span>
+                    <span class="text-[10px] font-mono text-gray-500">Version Control</span>
+                </div>
+                <div class="skill-card web p-4 rounded-2xl bg-darkBg/80 border border-gray-800 flex flex-col items-center justify-center text-center gap-2 hover:border-accentViolet transition-colors group">
+                    <i class="fa-solid fa-wind text-2xl text-cyan-300 group-hover:scale-110 transition-transform"></i>
+                    <span class="text-xs font-semibold text-gray-200">Tailwind CSS</span>
+                    <span class="text-[10px] font-mono text-gray-500">Modern Styling</span>
+                </div>
+                <div class="skill-card tools p-4 rounded-2xl bg-darkBg/80 border border-gray-800 flex flex-col items-center justify-center text-center gap-2 hover:border-emerald-400 transition-colors group">
+                    <i class="fa-brands fa-figma text-2xl text-pink-400 group-hover:scale-110 transition-transform"></i>
+                    <span class="text-xs font-semibold text-gray-200">Figma</span>
+                    <span class="text-[10px] font-mono text-gray-500">UI Design</span>
+                </div>
+                <div class="skill-card tools p-4 rounded-2xl bg-darkBg/80 border border-gray-800 flex flex-col items-center justify-center text-center gap-2 hover:border-emerald-400 transition-colors group">
+                    <i class="fa-solid fa-server text-2xl text-emerald-400 group-hover:scale-110 transition-transform"></i>
+                    <span class="text-xs font-semibold text-gray-200">Hosting & Deploy</span>
+                    <span class="text-[10px] font-mono text-gray-500">cPanel & VPS</span>
+                </div>
+                <div class="skill-card mobile p-4 rounded-2xl bg-darkBg/80 border border-gray-800 flex flex-col items-center justify-center text-center gap-2 hover:border-accentCyan transition-colors group">
+                    <i class="fa-solid fa-plug text-2xl text-accentCyan group-hover:scale-110 transition-transform"></i>
+                    <span class="text-xs font-semibold text-gray-200">REST API</span>
+                    <span class="text-[10px] font-mono text-gray-500">App Integration</span>
+                </div>
             </div>
         </section>
 
@@ -929,7 +989,7 @@
                 <span class="text-xs font-mono uppercase tracking-widest text-accentCyan">Let's Connect</span>
                 <h2 class="text-3xl sm:text-4xl font-extrabold text-white">Let's Build Something Impactful Together.</h2>
                 <p class="text-gray-400 text-sm leading-relaxed">
-                    Have an upcoming project, brand launch, or looking to supercharge your social media presence? Drop a message or reach out directly.
+                    Need a website, a mobile app, or a custom system for your business? Tell me about your idea &mdash; I'm based in Batam and happy to work with clients anywhere.
                 </p>
 
                 <!-- Quick Copy Email Button -->
@@ -954,8 +1014,8 @@
                     <a href="https://linkedin.com" target="_blank" rel="noopener" class="w-11 h-11 rounded-xl glass-card border border-gray-800 flex items-center justify-center text-gray-400 hover:text-white hover:border-accentViolet transition-all">
                         <i class="fa-brands fa-linkedin-in text-lg"></i>
                     </a>
-                    <a href="https://tiktok.com" target="_blank" rel="noopener" class="w-11 h-11 rounded-xl glass-card border border-gray-800 flex items-center justify-center text-gray-400 hover:text-white hover:border-accentCyan transition-all">
-                        <i class="fa-brands fa-tiktok text-lg"></i>
+                    <a href="https://github.com/afdillahsafitra" target="_blank" rel="noopener" aria-label="GitHub" class="w-11 h-11 rounded-xl glass-card border border-gray-800 flex items-center justify-center text-gray-400 hover:text-white hover:border-accentCyan transition-all">
+                        <i class="fa-brands fa-github text-lg"></i>
                     </a>
                     <a href="https://instagram.com" target="_blank" rel="noopener" class="w-11 h-11 rounded-xl glass-card border border-gray-800 flex items-center justify-center text-gray-400 hover:text-white hover:border-pink-500 transition-all">
                         <i class="fa-brands fa-instagram text-lg"></i>
@@ -982,10 +1042,11 @@
                     <div>
                         <label class="block text-xs font-mono text-gray-400 mb-2">PROJECT TYPE</label>
                         <select class="w-full px-4 py-3 rounded-xl bg-darkBg border border-gray-800 text-gray-300 focus:outline-none focus:border-accentViolet text-sm">
-                            <option>Social Media Retainer & Strategy</option>
-                            <option>Short-Form Video Editing (Reels/TikTok)</option>
-                            <option>3D Apparel Design & Rendering</option>
-                            <option>Full-Time Role Inquiry</option>
+                            <option>Website Development</option>
+                            <option>Mobile App Development</option>
+                            <option>Custom Software / System</option>
+                            <option>Collaboration with PT Human Technology Solutions</option>
+                            <option>Job Opportunity</option>
                         </select>
                     </div>
                     <div>
@@ -1055,11 +1116,11 @@
             revealEls.forEach(el => el.classList.add('is-visible'));
         }
 
-        // 3D tilt for the hero profile card (mouse / pen only)
-        const tiltCard = document.getElementById('tiltCard');
-        const tiltScene = tiltCard ? tiltCard.closest('.tilt-scene') : null;
+        // 3D tilt for [data-tilt] cards (mouse / pen only)
         const reduceMotion = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
-        if (tiltCard && tiltScene && !reduceMotion) {
+        document.querySelectorAll('[data-tilt]').forEach(tiltCard => {
+            const tiltScene = tiltCard.closest('.tilt-scene');
+            if (!tiltScene || reduceMotion) return;
             let frame = null;
             tiltScene.addEventListener('pointermove', (e) => {
                 if (e.pointerType === 'touch') return;
@@ -1079,7 +1140,7 @@
                 ['--rx', '--ry'].forEach(v => tiltCard.style.setProperty(v, '0deg'));
                 ['--mx', '--my'].forEach(v => tiltCard.style.setProperty(v, '50%'));
             });
-        }
+        });
 
         // Back to Top visibility
         const backToTop = document.getElementById('backToTop');
