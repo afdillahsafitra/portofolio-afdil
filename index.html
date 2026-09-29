@@ -12,32 +12,8 @@
     <!-- FontAwesome Icons -->
     <script defer src="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/js/all.min.js"></script>
 
-    <!-- Tailwind CSS CDN -->
-    <script src="https://cdn.tailwindcss.com"></script>
-    <script>
-        tailwind.config = {
-            darkMode: 'class',
-            theme: {
-                extend: {
-                    fontFamily: {
-                        sans: ['Plus Jakarta Sans', 'sans-serif'],
-                        mono: ['JetBrains Mono', 'monospace'],
-                    },
-                    colors: {
-                        darkBg: '#0D0F12',
-                        cardBg: '#161B22',
-                        cardHover: '#1C2128',
-                        accentViolet: '#6366F1',
-                        accentCyan: '#22D3EE',
-                    },
-                    boxShadow: {
-                        glowViolet: '0 0 25px -5px rgba(99, 102, 241, 0.4)',
-                        glowCyan: '0 0 25px -5px rgba(34, 211, 238, 0.4)',
-                    }
-                }
-            }
-        }
-    </script>
+    <!-- Tailwind CSS (compiled with `npm run build`; config in tailwind.config.js) -->
+    <link rel="stylesheet" href="assets/css/tailwind.css">
 
     <style>
         body {
