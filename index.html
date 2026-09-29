@@ -106,6 +106,183 @@
             animation: pulseGlow 4s infinite ease-in-out;
         }
 
+        /* ===== Hero 3D Glass Profile Card ===== */
+        .tilt-scene { perspective: 1200px; }
+        .tilt-card {
+            --rx: 0deg; --ry: 0deg; --mx: 50%; --my: 50%;
+            transform-style: preserve-3d;
+            transform: rotateX(var(--rx)) rotateY(var(--ry));
+            transition: transform 0.25s ease-out;
+            aspect-ratio: 4 / 5;
+        }
+        .float-y { animation: floatY 6s ease-in-out infinite; transform-style: preserve-3d; }
+        @keyframes floatY {
+            0%, 100% { transform: translateY(0); }
+            50% { transform: translateY(-14px); }
+        }
+
+        /* Glass frame holding the white backdrop */
+        .profile-frame {
+            position: absolute;
+            inset: 14% 0 0 0;
+            padding: 10px;
+            border-radius: 28px;
+            background: linear-gradient(145deg, rgba(255,255,255,0.18), rgba(255,255,255,0.04));
+            border: 1px solid rgba(255,255,255,0.18);
+            backdrop-filter: blur(18px);
+            -webkit-backdrop-filter: blur(18px);
+            box-shadow: 0 30px 60px -20px rgba(0,0,0,0.7), 0 0 40px -10px rgba(99,102,241,0.45), inset 0 1px 0 rgba(255,255,255,0.25);
+            transform: translateZ(0);
+        }
+        .profile-backdrop {
+            position: relative;
+            width: 100%;
+            height: 100%;
+            border-radius: 20px;
+            overflow: hidden;
+            background:
+                radial-gradient(circle at var(--mx) var(--my), #FFFFFF 0%, #F8FAFC 45%, #E2E8F0 100%);
+        }
+        /* Diagonal light sweep across the white backdrop */
+        .profile-shine {
+            position: absolute;
+            inset: -50%;
+            background: linear-gradient(115deg, transparent 40%, rgba(99,102,241,0.18) 48%, rgba(34,211,238,0.22) 52%, transparent 60%);
+            animation: shineSweep 5s ease-in-out infinite;
+        }
+        @keyframes shineSweep {
+            0% { transform: translateX(-60%); }
+            60%, 100% { transform: translateX(60%); }
+        }
+
+        /* Cut-out photo sits in front of the frame and pops out of the top */
+        .profile-photo {
+            position: absolute;
+            left: 50%;
+            bottom: 10px;
+            width: 92%;
+            height: auto;
+            transform: translateX(-50%) translateZ(50px);
+            filter: drop-shadow(0 25px 25px rgba(0,0,0,0.45));
+            pointer-events: none;
+            user-select: none;
+            -webkit-mask-image: linear-gradient(to bottom, #000 80%, transparent 99%);
+            mask-image: linear-gradient(to bottom, #000 80%, transparent 99%);
+        }
+
+        /* Floating glass chips at different depths */
+        .glass-chip {
+            position: absolute;
+            display: flex;
+            align-items: center;
+            gap: 8px;
+            padding: 8px 12px;
+            border-radius: 14px;
+            background: rgba(13, 15, 18, 0.78);
+            border: 1px solid rgba(255,255,255,0.14);
+            backdrop-filter: blur(14px);
+            -webkit-backdrop-filter: blur(14px);
+            box-shadow: 0 12px 30px -8px rgba(0,0,0,0.6), inset 0 1px 0 rgba(255,255,255,0.12);
+            white-space: nowrap;
+        }
+        .chip-tl { top: 20%; left: -8%; transform: translateZ(90px); animation: chipBob 5s ease-in-out infinite; }
+        .chip-tr { top: 8%; right: -6%; transform: translateZ(110px); animation: chipBob 6s ease-in-out -2s infinite; }
+        .chip-mr { top: 50%; right: -10%; transform: translateZ(80px); animation: chipBob 7s ease-in-out -4s infinite; }
+        @keyframes chipBob {
+            0%, 100% { translate: 0 0; }
+            50% { translate: 0 -8px; }
+        }
+
+        .profile-caption {
+            position: absolute;
+            left: 6%;
+            right: 6%;
+            bottom: -8%;
+            padding: 14px 16px;
+            border-radius: 18px;
+            background: rgba(13, 15, 18, 0.6);
+            border: 1px solid rgba(255,255,255,0.16);
+            backdrop-filter: blur(18px);
+            -webkit-backdrop-filter: blur(18px);
+            box-shadow: 0 20px 40px -12px rgba(0,0,0,0.7), inset 0 1px 0 rgba(255,255,255,0.12);
+            transform: translateZ(70px);
+        }
+
+        /* Rotating conic halo */
+        .hero-halo {
+            position: absolute;
+            inset: 18% 8% 4% 8%;
+            border-radius: 40px;
+            background: conic-gradient(from 0deg, #6366F1, #22D3EE, #A855F7, #6366F1);
+            filter: blur(40px);
+            opacity: 0.45;
+            animation: haloSpin 10s linear infinite;
+            z-index: -1;
+        }
+        @keyframes haloSpin { to { transform: rotate(360deg); } }
+
+        /* Entrance */
+        .hero-enter { animation: heroEnter 1s cubic-bezier(.2,.8,.2,1) both; }
+        @keyframes heroEnter {
+            from { opacity: 0; transform: translateY(30px) scale(0.96); }
+            to { opacity: 1; transform: none; }
+        }
+
+        @media (max-width: 640px) {
+            .chip-tl { top: 38%; left: -2%; }
+            .chip-tr { right: -2%; }
+            .chip-mr { top: 58%; right: -3%; }
+        }
+        @media (prefers-reduced-motion: reduce) {
+            .float-y, .profile-shine, .glass-chip, .hero-halo, .hero-enter { animation: none; }
+        }
+
+        /* ===== Company Profile ===== */
+        .company-scene { perspective: 1400px; }
+        .company-browser {
+            border-radius: 24px;
+            overflow: hidden;
+            background: linear-gradient(145deg, rgba(255,255,255,0.12), rgba(255,255,255,0.03));
+            border: 1px solid rgba(255,255,255,0.14);
+            backdrop-filter: blur(18px);
+            -webkit-backdrop-filter: blur(18px);
+            box-shadow: 0 40px 80px -30px rgba(0,0,0,0.8), 0 0 50px -15px rgba(34,211,238,0.35), inset 0 1px 0 rgba(255,255,255,0.2);
+            transform: rotateY(-8deg) rotateX(4deg);
+            transition: transform 0.6s cubic-bezier(.2,.8,.2,1), box-shadow 0.6s ease;
+        }
+        .company-browser:hover,
+        .company-browser:focus-visible {
+            transform: rotateY(0deg) rotateX(0deg) translateY(-6px);
+            box-shadow: 0 50px 90px -30px rgba(0,0,0,0.85), 0 0 70px -10px rgba(99,102,241,0.5), inset 0 1px 0 rgba(255,255,255,0.25);
+        }
+        .company-shine {
+            position: absolute;
+            inset: -50%;
+            background: linear-gradient(115deg, transparent 42%, rgba(255,255,255,0.14) 50%, transparent 58%);
+            animation: shineSweep 6s ease-in-out infinite;
+            pointer-events: none;
+        }
+        .company-logo {
+            position: relative;
+            flex-shrink: 0;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            border-radius: 20px;
+            font-weight: 800;
+            letter-spacing: 0.05em;
+            color: #fff;
+            background: linear-gradient(135deg, #6366F1, #22D3EE);
+            box-shadow: 0 10px 30px -8px rgba(99,102,241,0.7), inset 0 1px 0 rgba(255,255,255,0.4);
+        }
+        @media (max-width: 1023px) {
+            .company-browser { transform: none; }
+        }
+        @media (prefers-reduced-motion: reduce) {
+            .company-browser { transition: none; }
+            .company-shine { animation: none; }
+        }
+
         /* Scroll Reveal Animation */
         .reveal {
             opacity: 0;
@@ -142,10 +319,9 @@
             <!-- Desktop Nav Links -->
             <nav class="hidden md:flex items-center gap-8 font-medium text-sm text-gray-300">
                 <a href="#about" class="hover:text-accentCyan transition-colors">About</a>
-                <a href="#projects" class="hover:text-accentCyan transition-colors">Projects</a>
+                <a href="#company" class="hover:text-accentCyan transition-colors">Company</a>
                 <a href="#services" class="hover:text-accentCyan transition-colors">Services</a>
                 <a href="#experience" class="hover:text-accentCyan transition-colors">Experience</a>
-                <a href="#growth" class="hover:text-accentCyan transition-colors">Case Studies</a>
                 <a href="#skills" class="hover:text-accentCyan transition-colors">Skills & Tools</a>
                 <a href="#contact" class="hover:text-accentCyan transition-colors">Contact</a>
             </nav>
@@ -170,10 +346,9 @@
         <!-- Mobile Menu Dropdown -->
         <div id="mobileMenu" class="hidden md:hidden glass-card border-t border-gray-800 px-6 py-6 space-y-4">
             <a href="#about" class="block text-gray-300 hover:text-accentCyan py-2 text-base font-medium">About</a>
-            <a href="#projects" class="block text-gray-300 hover:text-accentCyan py-2 text-base font-medium">Projects</a>
+            <a href="#company" class="block text-gray-300 hover:text-accentCyan py-2 text-base font-medium">Company</a>
             <a href="#services" class="block text-gray-300 hover:text-accentCyan py-2 text-base font-medium">Services</a>
             <a href="#experience" class="block text-gray-300 hover:text-accentCyan py-2 text-base font-medium">Experience</a>
-            <a href="#growth" class="block text-gray-300 hover:text-accentCyan py-2 text-base font-medium">Case Studies</a>
             <a href="#skills" class="block text-gray-300 hover:text-accentCyan py-2 text-base font-medium">Skills & Tools</a>
             <a href="#contact" class="block text-gray-300 hover:text-accentCyan py-2 text-base font-medium">Contact</a>
             <a href="#contact" class="block w-full text-center py-3 rounded-xl bg-gradient-to-r from-accentViolet to-accentCyan text-white font-semibold shadow-glowViolet">
@@ -185,7 +360,7 @@
     <main class="pt-28 pb-16 px-4 sm:px-6 lg:px-8 max-w-7xl mx-auto space-y-24">
 
         <!-- Hero Section -->
-        <section class="relative pt-6 md:pt-12">
+        <section class="relative pt-6 md:pt-12 overflow-x-clip">
             <!-- Background Ambient Glow -->
             <div class="absolute top-1/4 left-1/2 -translate-x-1/2 -translate-y-1/2 w-96 h-96 bg-accentViolet/20 rounded-full blur-[120px] pointer-events-none animate-pulse-glow"></div>
             <div class="absolute top-1/3 right-10 w-80 h-80 bg-accentCyan/15 rounded-full blur-[100px] pointer-events-none"></div>
@@ -202,6 +377,9 @@
                         Available for Freelance & Full-time Roles
                     </div>
 
+                    <!-- Greeting -->
+                    <p class="text-base sm:text-lg text-gray-300 font-medium">Hi, I'm <span class="font-bold text-white">Afdillah Safitra</span> &mdash; Social Media Specialist & Visual Creator based in Indonesia.</p>
+
                     <!-- Main Headline -->
                     <h1 class="text-4xl sm:text-5xl lg:text-6xl font-extrabold tracking-tight leading-[1.15]">
                         Transforming Content into <span class="text-gradient">High-Converting</span> Visual Experiences.
@@ -214,8 +392,8 @@
 
                     <!-- CTAs & Resume Download -->
                     <div class="flex flex-wrap items-center gap-4 pt-4">
-                        <a href="#projects" class="px-7 py-3.5 rounded-xl bg-gradient-to-r from-accentViolet to-indigo-600 text-white font-semibold hover:shadow-glowViolet transition-all duration-300 flex items-center gap-2">
-                            <span>Explore Projects</span>
+                        <a href="#company" class="px-7 py-3.5 rounded-xl bg-gradient-to-r from-accentViolet to-indigo-600 text-white font-semibold hover:shadow-glowViolet transition-all duration-300 flex items-center gap-2">
+                            <span>Explore My Company</span>
                             <i class="fa-solid fa-arrow-down text-xs"></i>
                         </a>
 
@@ -242,66 +420,69 @@
                     </div>
                 </div>
 
-                <!-- Hero Right Column / Visual Widget -->
-                <div class="lg:col-span-5">
-                    <div class="relative mx-auto max-w-md lg:max-w-none">
-                        <!-- Decorative Glass Frame -->
-                        <div class="glass-card rounded-2xl p-6 relative z-10 space-y-6 shadow-2xl border border-white/10 hover:border-accentViolet/40 transition-colors">
-                            <div class="flex items-center justify-between pb-4 border-b border-gray-800">
-                                <div class="flex items-center gap-3">
-                                    <div class="w-12 h-12 rounded-full bg-indigo-900/50 border border-indigo-500/30 flex items-center justify-center text-accentCyan text-xl">
-                                        <i class="fa-solid fa-chart-line"></i>
+                <!-- Hero Right Column / 3D Glass Profile Card -->
+                <div class="lg:col-span-5 hero-enter">
+                    <div class="tilt-scene relative mx-auto w-full max-w-[400px] pt-10 pb-6 px-4 sm:px-6">
+                        <!-- Rotating gradient halo behind the card -->
+                        <div class="hero-halo" aria-hidden="true"></div>
+
+                        <div class="float-y">
+                            <div id="tiltCard" class="tilt-card relative">
+                                <!-- Layer 0: glass frame + white backdrop -->
+                                <div class="profile-frame">
+                                    <div class="profile-backdrop">
+                                        <div class="profile-shine" aria-hidden="true"></div>
                                     </div>
+                                </div>
+
+                                <!-- Layer 1: cut-out photo that pops out of the frame -->
+                                <img src="assets/afdillah-cutout.webp" alt="Afdillah Safitra" class="profile-photo" width="828" height="1037">
+
+                                <!-- Layer 2: floating glass badges -->
+                                <div class="glass-chip chip-tl">
+                                    <span class="w-8 h-8 rounded-lg bg-accentViolet/25 text-accentViolet flex items-center justify-center"><i class="fa-solid fa-scissors text-xs"></i></span>
                                     <div>
-                                        <h3 class="text-sm font-semibold text-white">Campaign Performance</h3>
-                                        <p class="text-xs text-gray-400 font-mono">Live Performance Overview</p>
-                                    </div>
-                                </div>
-                                <span class="px-2.5 py-1 rounded-md bg-accentViolet/20 text-accentViolet text-xs font-mono font-medium">Q3 Highlights</span>
-                            </div>
-
-                            <!-- Mini Metrics List -->
-                            <div class="space-y-4">
-                                <div>
-                                    <div class="flex justify-between text-xs font-mono mb-1.5">
-                                        <span class="text-gray-400">Viral Short-form Retention</span>
-                                        <span class="text-accentCyan font-bold">84.2%</span>
-                                    </div>
-                                    <div class="w-full h-2 bg-gray-800 rounded-full overflow-hidden">
-                                        <div class="h-full bg-gradient-to-r from-accentViolet to-accentCyan rounded-full" style="width: 84%;"></div>
+                                        <div class="text-[11px] font-semibold text-white leading-tight">Video Editor</div>
+                                        <div class="text-[9px] font-mono text-gray-400">CapCut · Premiere</div>
                                     </div>
                                 </div>
 
-                                <div>
-                                    <div class="flex justify-between text-xs font-mono mb-1.5">
-                                        <span class="text-gray-400">CTR Optimization (Apparel Ads)</span>
-                                        <span class="text-emerald-400 font-bold">+14.8%</span>
-                                    </div>
-                                    <div class="w-full h-2 bg-gray-800 rounded-full overflow-hidden">
-                                        <div class="h-full bg-emerald-500 rounded-full" style="width: 72%;"></div>
+                                <div class="glass-chip chip-tr">
+                                    <i class="fa-solid fa-eye text-accentCyan text-xs"></i>
+                                    <div>
+                                        <div class="text-sm font-extrabold font-mono text-white leading-tight">5.2M+</div>
+                                        <div class="text-[9px] font-mono text-gray-400">Views</div>
                                     </div>
                                 </div>
-                            </div>
 
-                            <!-- Visual Mockup Showcase Pill -->
-                            <div class="pt-2">
-                                <div class="p-3 rounded-xl bg-darkBg/80 border border-gray-800 flex items-center justify-between">
-                                    <div class="flex items-center gap-3">
-                                        <div class="w-10 h-10 rounded-lg bg-indigo-500/20 flex items-center justify-center text-accentViolet">
-                                            <i class="fa-solid fa-shirt"></i>
-                                        </div>
+                                <div class="glass-chip chip-mr">
+                                    <span class="w-8 h-8 rounded-lg bg-purple-500/25 text-purple-300 flex items-center justify-center"><i class="fa-solid fa-cube text-xs"></i></span>
+                                    <div>
+                                        <div class="text-[11px] font-semibold text-white leading-tight">3D Apparel</div>
+                                        <div class="text-[9px] font-mono text-gray-400">Boxy Tee Renders</div>
+                                    </div>
+                                </div>
+
+                                <!-- Layer 3: short bio glass panel -->
+                                <div class="profile-caption">
+                                    <div class="flex items-center justify-between gap-3">
                                         <div>
-                                            <p class="text-xs font-medium text-gray-200">Boxy Tee 3D Rendering</p>
-                                            <p class="text-[10px] text-gray-500">CLO3D / SketchUp Preview</p>
+                                            <h3 class="text-base font-bold text-white leading-tight">Afdillah Safitra</h3>
+                                            <p class="text-[11px] font-mono text-accentCyan">Social Media Specialist & Visual Creator</p>
                                         </div>
+                                        <span class="shrink-0 w-9 h-9 rounded-full bg-emerald-500/20 border border-emerald-400/40 flex items-center justify-center" title="Available for work">
+                                            <span class="relative flex h-2.5 w-2.5">
+                                                <span class="animate-ping absolute inline-flex h-full w-full rounded-full bg-emerald-400 opacity-75"></span>
+                                                <span class="relative inline-flex rounded-full h-2.5 w-2.5 bg-emerald-400"></span>
+                                            </span>
+                                        </span>
                                     </div>
-                                    <i class="fa-solid fa-circle-check text-accentCyan text-sm"></i>
+                                    <p class="text-xs text-gray-300 leading-relaxed mt-2">
+                                        I help brands grow through scroll-stopping short-form video, realistic 3D apparel visuals, and data-driven content strategy.
+                                    </p>
                                 </div>
                             </div>
                         </div>
-
-                        <!-- Back Glow Decorative Box -->
-                        <div class="absolute -inset-1.5 bg-gradient-to-r from-accentViolet to-accentCyan rounded-2xl blur-xl opacity-30 -z-10"></div>
                     </div>
                 </div>
             </div>
@@ -380,153 +561,117 @@
             </div>
         </section>
 
-        <!-- Bento Grid Portfolio Showcase -->
-        <section id="projects" class="reveal space-y-8 scroll-mt-28">
+        <!-- Company Profile Section -->
+        <section id="company" class="reveal space-y-8 scroll-mt-28">
             <div class="flex flex-col md:flex-row md:items-end justify-between gap-4 border-b border-gray-800 pb-6">
                 <div>
-                    <span class="text-xs font-mono uppercase tracking-widest text-accentCyan">Interactive Showcase</span>
-                    <h2 class="text-3xl sm:text-4xl font-bold text-white mt-1">Featured Work & Case Studies</h2>
+                    <span class="text-xs font-mono uppercase tracking-widest text-accentCyan">My Company</span>
+                    <h2 class="text-3xl sm:text-4xl font-bold text-white mt-1">PT Human <span class="text-accent-gradient">Technology</span> Solutions</h2>
                 </div>
-                <p class="text-sm text-gray-400 max-w-md">Click on any card to explore full strategy breakdowns, metrics, and key deliverables.</p>
+                <a href="https://humantechnologysolutions.com/" target="_blank" rel="noopener" class="text-sm font-mono text-gray-400 hover:text-accentCyan transition-colors flex items-center gap-2">
+                    <i class="fa-solid fa-globe"></i>
+                    humantechnologysolutions.com
+                    <i class="fa-solid fa-arrow-up-right-from-square text-[10px]"></i>
+                </a>
             </div>
 
-            <!-- Bento Grid Structure -->
-            <div class="grid grid-cols-1 md:grid-cols-3 lg:grid-cols-4 gap-6">
-
-                <!-- CARD 1: Wide 2x2 Short-Form Video Showcase -->
-                <div onclick="openModal('modal-video')" class="md:col-span-2 lg:col-span-2 group glass-card rounded-3xl p-6 hover:bg-cardHover cursor-pointer transition-all duration-300 relative overflow-hidden border border-gray-800 hover:border-accentViolet/50">
-                    <div class="flex flex-col h-full justify-between space-y-6">
-                        <!-- Top Metadata -->
-                        <div class="flex items-center justify-between">
-                            <span class="px-3 py-1 rounded-full text-xs font-mono bg-accentViolet/20 text-accentViolet font-semibold">Video Reel Showcase</span>
-                            <span class="text-xs text-gray-400 font-mono"><i class="fa-solid fa-eye text-accentCyan mr-1"></i> 1.2M Views</span>
-                        </div>
-
-                        <!-- Mock Mobile Video Player Wrapper -->
-                        <div class="relative w-full h-64 sm:h-72 rounded-2xl bg-gradient-to-br from-gray-900 to-black overflow-hidden flex items-center justify-center border border-gray-800 group-hover:border-accentViolet/30">
-                            <!-- Background Mock Visual -->
-                            <div class="absolute inset-0 bg-cover bg-center opacity-60 group-hover:scale-105 transition-transform duration-700" style="background-image: url('https://images.unsplash.com/photo-1574717024653-61fd2cf4d44d?auto=format&fit=crop&w=800&q=80');"></div>
-                            <div class="absolute inset-0 bg-gradient-to-t from-darkBg via-transparent to-transparent"></div>
-
-                            <!-- Play Button Overlay -->
-                            <div class="relative z-10 w-16 h-16 rounded-full bg-accentViolet/80 text-white flex items-center justify-center shadow-glowViolet group-hover:scale-110 transition-transform">
-                                <i class="fa-solid fa-play text-xl ml-1"></i>
+            <div class="grid grid-cols-1 lg:grid-cols-12 gap-8 items-center">
+                <!-- Website Preview in a Glass Browser Mockup -->
+                <div class="lg:col-span-7 company-scene">
+                    <a href="https://humantechnologysolutions.com/" target="_blank" rel="noopener" class="company-browser group block" aria-label="Visit humantechnologysolutions.com">
+                        <!-- Browser Top Bar -->
+                        <div class="flex items-center gap-3 px-4 py-3 border-b border-white/10">
+                            <div class="flex gap-1.5">
+                                <span class="w-3 h-3 rounded-full bg-red-400/80"></span>
+                                <span class="w-3 h-3 rounded-full bg-amber-400/80"></span>
+                                <span class="w-3 h-3 rounded-full bg-emerald-400/80"></span>
                             </div>
+                            <div class="flex-1 min-w-0 flex items-center gap-2 px-3 py-1.5 rounded-lg bg-black/30 border border-white/10 text-[11px] font-mono text-gray-300">
+                                <i class="fa-solid fa-lock text-emerald-400 text-[10px]"></i>
+                                <span class="truncate">https://humantechnologysolutions.com</span>
+                            </div>
+                            <i class="fa-solid fa-arrow-up-right-from-square text-xs text-gray-400 group-hover:text-accentCyan transition-colors"></i>
+                        </div>
 
-                            <!-- Overlay Badges -->
-                            <div class="absolute bottom-4 left-4 right-4 flex justify-between items-center z-10 text-xs font-mono">
-                                <span class="bg-black/60 backdrop-blur-md px-3 py-1.5 rounded-lg text-white border border-white/10">CapCut Pro & Premiere</span>
-                                <span class="bg-emerald-500/20 text-emerald-300 border border-emerald-500/30 px-3 py-1.5 rounded-lg font-bold">18.2% Retention Rate</span>
+                        <!-- Screenshot Area -->
+                        <div class="relative aspect-[16/10] overflow-hidden bg-darkBg">
+                            <!-- Fallback shown if the live preview can't load -->
+                            <div class="absolute inset-0 flex flex-col items-center justify-center gap-3 sm:gap-4 pb-12 sm:pb-0 bg-gradient-to-br from-indigo-950 via-darkBg to-cyan-950">
+                                <div class="absolute inset-0 bg-grid-pattern"></div>
+                                <div class="company-logo w-14 h-14 sm:w-20 sm:h-20 text-lg sm:text-2xl">HTS</div>
+                                <div class="relative text-center">
+                                    <div class="font-bold text-white">Human Technology Solutions</div>
+                                    <div class="text-xs font-mono text-gray-400 mt-1">humantechnologysolutions.com</div>
+                                </div>
+                            </div>
+                            <!-- Live website snapshot (swap for a local screenshot, e.g. assets/company-preview.webp, if preferred) -->
+                            <img src="https://image.thum.io/get/width/1200/crop/750/https://humantechnologysolutions.com/"
+                                 alt="Homepage of PT Human Technology Solutions"
+                                 loading="lazy"
+                                 onerror="this.remove()"
+                                 class="relative w-full h-full object-cover object-top transition-transform duration-[1.5s] ease-out group-hover:scale-105">
+                            <div class="company-shine" aria-hidden="true"></div>
+                            <div class="absolute inset-0 bg-gradient-to-t from-darkBg/90 via-transparent to-transparent"></div>
+
+                            <!-- Hover CTA -->
+                            <div class="absolute inset-x-0 bottom-0 p-5 flex items-end justify-between gap-3">
+                                <span class="glass-chip !static text-xs font-mono text-gray-200">
+                                    <i class="fa-solid fa-building text-accentCyan"></i> Official Website
+                                </span>
+                                <span class="px-4 py-2 rounded-xl bg-gradient-to-r from-accentViolet to-accentCyan text-white text-xs font-semibold shadow-glowViolet flex items-center gap-2 translate-y-2 opacity-90 group-hover:translate-y-0 group-hover:opacity-100 transition-all">
+                                    Visit Website <i class="fa-solid fa-arrow-right"></i>
+                                </span>
                             </div>
                         </div>
-
-                        <!-- Card Title & Description -->
-                        <div>
-                            <h3 class="text-xl font-bold text-white group-hover:text-accentCyan transition-colors flex items-center justify-between">
-                                <span>High-Paced Urban Streetwear Reel Campaign</span>
-                                <i class="fa-solid fa-arrow-up-right-from-square text-sm opacity-0 group-hover:opacity-100 transition-opacity"></i>
-                            </h3>
-                            <p class="text-sm text-gray-400 mt-2">Dynamic quick-cut editing style combined with sound design hooks that increased organic share rate by 240%.</p>
-                        </div>
-                    </div>
+                    </a>
                 </div>
 
-                <!-- CARD 2: Tall 1x2 Social Media Growth Case Study -->
-                <div id="growth" onclick="openModal('modal-growth')" class="md:col-span-1 lg:col-span-1 lg:row-span-2 group glass-card rounded-3xl p-6 hover:bg-cardHover cursor-pointer transition-all duration-300 relative overflow-hidden border border-gray-800 hover:border-accentCyan/50 flex flex-col justify-between">
-                    <div class="space-y-6">
-                        <div class="flex items-center justify-between">
-                            <span class="px-3 py-1 rounded-full text-xs font-mono bg-cyan-500/20 text-accentCyan font-semibold">Case Study</span>
-                            <i class="fa-solid fa-arrow-trend-up text-accentCyan"></i>
-                        </div>
-
-                        <div>
-                            <h3 class="text-xl font-bold text-white group-hover:text-accentCyan transition-colors">30-Day Social Growth Sprint</h3>
-                            <p class="text-xs text-gray-400 mt-2">Scale-up campaign for a local lifestyle apparel brand.</p>
-                        </div>
-
-                        <!-- Growth Chart Visual Graphic -->
-                        <div class="py-4 space-y-3">
-                            <div class="bg-darkBg/80 p-4 rounded-xl border border-gray-800 space-y-2">
-                                <div class="text-[11px] text-gray-400 font-mono">Reach Growth (Before vs. After)</div>
-                                <div class="flex items-end justify-between h-28 pt-4 gap-2">
-                                    <div class="w-1/4 bg-gray-700 rounded-t h-1/3 text-center text-[9px] text-gray-400 pt-1">12K</div>
-                                    <div class="w-1/4 bg-indigo-900/60 rounded-t h-1/2 text-center text-[9px] text-indigo-300 pt-1">45K</div>
-                                    <div class="w-1/4 bg-indigo-600/80 rounded-t h-3/4 text-center text-[9px] text-white pt-1">120K</div>
-                                    <div class="w-1/4 bg-accentCyan rounded-t h-full text-center text-[9px] text-black font-bold pt-1">380K</div>
+                <!-- Company Profile Glass Card -->
+                <div class="lg:col-span-5">
+                    <div class="relative">
+                        <div class="absolute -inset-1.5 bg-gradient-to-br from-accentViolet to-accentCyan rounded-3xl blur-2xl opacity-25 -z-10"></div>
+                        <div class="glass-card rounded-3xl p-6 sm:p-8 border border-white/10 space-y-6">
+                            <div class="flex items-center gap-4">
+                                <div class="company-logo w-16 h-16 text-xl">HTS</div>
+                                <div>
+                                    <h3 class="text-xl font-bold text-white leading-tight">PT Human Technology Solutions</h3>
+                                    <span class="inline-flex items-center gap-1.5 mt-1.5 px-2.5 py-1 rounded-md bg-accentViolet/20 text-accentViolet text-[10px] font-mono font-semibold">
+                                        <i class="fa-solid fa-briefcase"></i> My Company
+                                    </span>
                                 </div>
                             </div>
 
-                            <div class="grid grid-cols-2 gap-2 text-center">
-                                <div class="p-3 rounded-xl bg-darkBg/60 border border-gray-800">
-                                    <div class="text-lg font-bold font-mono text-emerald-400">+310%</div>
-                                    <div class="text-[10px] text-gray-400">Engagement</div>
+                            <!-- Company description: replace with the official profile text from the website -->
+                            <p class="text-sm text-gray-400 leading-relaxed">
+                                Human Technology Solutions brings people and technology together &mdash; helping businesses grow with practical digital solutions, creative content, and a human-first approach.
+                            </p>
+
+                            <div class="grid grid-cols-3 gap-3">
+                                <div class="p-3 rounded-xl bg-darkBg/70 border border-gray-800 text-center">
+                                    <i class="fa-solid fa-users text-accentViolet"></i>
+                                    <div class="text-[10px] text-gray-400 mt-1.5">Human-First</div>
                                 </div>
-                                <div class="p-3 rounded-xl bg-darkBg/60 border border-gray-800">
-                                    <div class="text-lg font-bold font-mono text-accentCyan">14.2K</div>
-                                    <div class="text-[10px] text-gray-400">New Followers</div>
+                                <div class="p-3 rounded-xl bg-darkBg/70 border border-gray-800 text-center">
+                                    <i class="fa-solid fa-microchip text-accentCyan"></i>
+                                    <div class="text-[10px] text-gray-400 mt-1.5">Technology</div>
                                 </div>
+                                <div class="p-3 rounded-xl bg-darkBg/70 border border-gray-800 text-center">
+                                    <i class="fa-solid fa-lightbulb text-emerald-400"></i>
+                                    <div class="text-[10px] text-gray-400 mt-1.5">Solutions</div>
+                                </div>
+                            </div>
+
+                            <div class="flex flex-col sm:flex-row gap-3 pt-2">
+                                <a href="https://humantechnologysolutions.com/" target="_blank" rel="noopener" class="flex-1 px-5 py-3 rounded-xl bg-gradient-to-r from-accentViolet to-accentCyan text-white text-sm font-semibold text-center shadow-glowViolet hover:shadow-glowCyan transition-all flex items-center justify-center gap-2">
+                                    <i class="fa-solid fa-globe"></i> Visit Website
+                                </a>
+                                <a href="#contact" class="flex-1 px-5 py-3 rounded-xl glass-card text-gray-200 hover:text-white hover:border-gray-600 text-sm font-semibold text-center transition-all flex items-center justify-center gap-2">
+                                    <i class="fa-solid fa-envelope text-accentCyan"></i> Work With Us
+                                </a>
                             </div>
                         </div>
                     </div>
-
-                    <div class="pt-4 border-t border-gray-800 text-xs text-accentCyan font-mono flex items-center justify-between">
-                        <span>Read Strategy Breakdown</span>
-                        <i class="fa-solid fa-chevron-right group-hover:translate-x-1 transition-transform"></i>
-                    </div>
                 </div>
-
-                <!-- CARD 3: 1x1 3D & Apparel Visual Render -->
-                <div onclick="openModal('modal-3d')" class="md:col-span-1 lg:col-span-1 group glass-card rounded-3xl p-6 hover:bg-cardHover cursor-pointer transition-all duration-300 relative overflow-hidden border border-gray-800 hover:border-accentViolet/50 flex flex-col justify-between">
-                    <div>
-                        <div class="flex items-center justify-between mb-4">
-                            <span class="px-3 py-1 rounded-full text-xs font-mono bg-purple-500/20 text-purple-300 font-semibold">3D Apparel Design</span>
-                            <i class="fa-solid fa-cube text-purple-400"></i>
-                        </div>
-
-                        <!-- Image Preview -->
-                        <div class="w-full h-36 rounded-xl bg-gray-900 overflow-hidden relative border border-gray-800 group-hover:border-purple-500/30">
-                            <img src="https://images.unsplash.com/photo-1521572267360-ee0c2909d518?auto=format&fit=crop&w=600&q=80" alt="3D Tee Mockup" class="w-full h-full object-cover group-hover:scale-110 transition-transform duration-500">
-                            <div class="absolute inset-0 bg-gradient-to-t from-black/80 via-transparent to-transparent"></div>
-                            <span class="absolute bottom-2 left-2 text-[10px] font-mono bg-black/70 px-2 py-0.5 rounded text-gray-300">Boxy Tee Fit Mockup</span>
-                        </div>
-
-                        <h3 class="text-base font-bold text-white mt-4 group-hover:text-accentCyan transition-colors">3D Boxy Tee Digital Mockups</h3>
-                        <p class="text-xs text-gray-400 mt-1">Realistic garment lighting & texture rendering for streetwear launching.</p>
-                    </div>
-
-                    <div class="mt-4 text-xs font-mono text-purple-400 flex items-center gap-1">
-                        <span>View Visual Renders</span>
-                        <i class="fa-solid fa-arrow-right text-[10px]"></i>
-                    </div>
-                </div>
-
-                <!-- CARD 4: 1x1 Copywriting & Hook Strategy -->
-                <div onclick="openModal('modal-hooks')" class="md:col-span-1 lg:col-span-1 group glass-card rounded-3xl p-6 hover:bg-cardHover cursor-pointer transition-all duration-300 relative overflow-hidden border border-gray-800 hover:border-accentCyan/50 flex flex-col justify-between">
-                    <div>
-                        <div class="flex items-center justify-between mb-4">
-                            <span class="px-3 py-1 rounded-full text-xs font-mono bg-emerald-500/20 text-emerald-300 font-semibold">Content Strategy</span>
-                            <i class="fa-solid fa-pen-nib text-emerald-400"></i>
-                        </div>
-
-                        <!-- Mini Interactive Hook Box -->
-                        <div class="p-3.5 rounded-xl bg-darkBg/90 border border-gray-800 space-y-2">
-                            <div class="flex items-center justify-between text-[10px] font-mono text-gray-400">
-                                <span>TOP HOOK #1</span>
-                                <span class="text-emerald-400">3.2x Watch Time</span>
-                            </div>
-                            <p class="text-xs font-medium text-gray-200 italic">"Stop editing your reels like this if you want more sales..."</p>
-                        </div>
-
-                        <h3 class="text-base font-bold text-white mt-4 group-hover:text-accentCyan transition-colors">High-Converting Script Hooks</h3>
-                        <p class="text-xs text-gray-400 mt-1">Psychology-driven short video scripts for e-commerce conversion.</p>
-                    </div>
-
-                    <div class="mt-4 text-xs font-mono text-emerald-400 flex items-center gap-1">
-                        <span>Inspect Script Framework</span>
-                        <i class="fa-solid fa-arrow-right text-[10px]"></i>
-                    </div>
-                </div>
-
             </div>
         </section>
 
@@ -869,21 +1014,6 @@
         </div>
     </footer>
 
-    <!-- Case Study / Project Detail Modal -->
-    <div id="projectModal" class="fixed inset-0 z-50 hidden flex items-center justify-center p-4 bg-black/80 backdrop-blur-md">
-        <div class="glass-card max-w-2xl w-full rounded-3xl p-6 sm:p-8 border border-gray-700 max-h-[90vh] overflow-y-auto relative animate-in fade-in zoom-in duration-200">
-            <!-- Close Button -->
-            <button onclick="closeModal()" class="absolute top-6 right-6 text-gray-400 hover:text-white text-xl p-2 rounded-full hover:bg-gray-800">
-                <i class="fa-solid fa-xmark"></i>
-            </button>
-
-            <!-- Dynamic Modal Content Area -->
-            <div id="modalContent" class="space-y-6">
-                <!-- Content injected via JS -->
-            </div>
-        </div>
-    </div>
-
     <!-- Back to Top Button -->
     <button id="backToTop" onclick="window.scrollTo({ top: 0, behavior: 'smooth' })" class="fixed bottom-6 left-6 z-40 w-11 h-11 rounded-xl glass-card border border-gray-700 text-accentCyan hover:text-white hover:border-accentCyan items-center justify-center shadow-glowCyan transition-all hidden" aria-label="Back to top">
         <i class="fa-solid fa-arrow-up"></i>
@@ -923,6 +1053,32 @@
             revealEls.forEach(el => revealObserver.observe(el));
         } else {
             revealEls.forEach(el => el.classList.add('is-visible'));
+        }
+
+        // 3D tilt for the hero profile card (mouse / pen only)
+        const tiltCard = document.getElementById('tiltCard');
+        const tiltScene = tiltCard ? tiltCard.closest('.tilt-scene') : null;
+        const reduceMotion = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+        if (tiltCard && tiltScene && !reduceMotion) {
+            let frame = null;
+            tiltScene.addEventListener('pointermove', (e) => {
+                if (e.pointerType === 'touch') return;
+                const rect = tiltScene.getBoundingClientRect();
+                const px = (e.clientX - rect.left) / rect.width;
+                const py = (e.clientY - rect.top) / rect.height;
+                cancelAnimationFrame(frame);
+                frame = requestAnimationFrame(() => {
+                    tiltCard.style.setProperty('--ry', ((px - 0.5) * 18).toFixed(2) + 'deg');
+                    tiltCard.style.setProperty('--rx', ((0.5 - py) * 14).toFixed(2) + 'deg');
+                    tiltCard.style.setProperty('--mx', (px * 100).toFixed(1) + '%');
+                    tiltCard.style.setProperty('--my', (py * 100).toFixed(1) + '%');
+                });
+            });
+            tiltScene.addEventListener('pointerleave', () => {
+                cancelAnimationFrame(frame);
+                ['--rx', '--ry'].forEach(v => tiltCard.style.setProperty(v, '0deg'));
+                ['--mx', '--my'].forEach(v => tiltCard.style.setProperty(v, '50%'));
+            });
         }
 
         // Back to Top visibility
@@ -998,125 +1154,6 @@
                     card.style.display = 'none';
                 }
             });
-        }
-
-        // Modal Content Data Map
-        const modalData = {
-            'modal-video': {
-                title: 'Urban Streetwear Video Campaign Reel',
-                badge: 'Video Production',
-                problem: 'Brand needed a refreshed short-form content style to capture Gen-Z buyers on TikTok & Reels without paying for expensive ad placements.',
-                strategy: 'Designed fast-paced video edits with rhythmic cuts matching trending audio, aggressive hook overlays, and sound effects emphasizing fabric texture.',
-                tools: ['CapCut Pro', 'Premiere Pro', 'Photoshop'],
-                metrics: [
-                    { label: 'Organic Views', val: '1.2M+' },
-                    { label: 'Watch Completion', val: '84.2%' },
-                    { label: 'Shares', val: '14.5K' }
-                ]
-            },
-            'modal-growth': {
-                title: '30-Day Apparel Growth Strategy',
-                badge: 'Case Study',
-                problem: 'A local streetwear label was experiencing stagnant engagement rates (<1.5%) and declining organic reach.',
-                strategy: 'Restructured content calendar to focus 70% on educational hook-based reels, 20% on behind-the-scenes 3D renders, and 10% direct promotional offers.',
-                tools: ['CapCut Pro', 'Figma', 'Meta Ads Manager'],
-                metrics: [
-                    { label: 'Engagement Increase', val: '+310%' },
-                    { label: 'New Followers', val: '14,200' },
-                    { label: 'Direct Sales Conversions', val: '220+' }
-                ]
-            },
-            'modal-3d': {
-                title: '3D Boxy Tee Apparel Visualization',
-                badge: '3D & Product Render',
-                problem: 'Reducing pre-production sampling costs for new seasonal apparel drops.',
-                strategy: 'Created hyper-realistic 3D cloth simulations and garment mockups in SketchUp & CLO3D for early pre-order catalog marketing.',
-                tools: ['SketchUp', 'Photoshop', 'KeyShot'],
-                metrics: [
-                    { label: 'Sampling Cost Saved', val: '65%' },
-                    { label: 'Pre-Order Conversion', val: '12.4%' },
-                    { label: 'Renders Delivered', val: '15 Models' }
-                ]
-            },
-            'modal-hooks': {
-                title: 'High-Converting Script Hooks Engine',
-                badge: 'Copywriting',
-                problem: 'Viewers scrolling past the first 2 seconds of social media ads.',
-                strategy: 'Formulated a 3-part hook matrix addressing core viewer pain points within the first 1.5 seconds of play.',
-                tools: ['Notion', 'ChatGPT Strategy', 'CapCut'],
-                metrics: [
-                    { label: 'Retention Boost', val: '3.2x' },
-                    { label: 'Avg CTR', val: '4.8%' },
-                    { label: 'Script Library', val: '50+ Hooks' }
-                ]
-            }
-        };
-
-        // Open Modal Function
-        function openModal(key) {
-            const data = modalData[key];
-            if (!data) return;
-
-            const modal = document.getElementById('projectModal');
-            const content = document.getElementById('modalContent');
-
-            const toolsBadges = data.tools.map(t => `<span class="px-2.5 py-1 rounded-md bg-gray-800 text-xs font-mono text-gray-300">${t}</span>`).join(' ');
-
-            const metricsHtml = data.metrics.map(m => `
-                <div class="p-3 rounded-xl bg-darkBg border border-gray-800 text-center">
-                    <div class="text-xl font-bold font-mono text-accentCyan">${m.val}</div>
-                    <div class="text-[10px] text-gray-400 mt-1">${m.label}</div>
-                </div>
-            `).join('');
-
-            content.innerHTML = `
-                <div>
-                    <span class="px-3 py-1 rounded-full text-xs font-mono bg-accentViolet/20 text-accentViolet font-semibold">${data.badge}</span>
-                    <h3 class="text-2xl font-bold text-white mt-3">${data.title}</h3>
-                </div>
-
-                <div class="space-y-4 text-sm text-gray-300">
-                    <div>
-                        <h4 class="font-semibold text-white mb-1 font-mono text-xs uppercase text-accentCyan">The Challenge</h4>
-                        <p class="text-gray-400 leading-relaxed">${data.problem}</p>
-                    </div>
-
-                    <div>
-                        <h4 class="font-semibold text-white mb-1 font-mono text-xs uppercase text-accentCyan">Strategy & Execution</h4>
-                        <p class="text-gray-400 leading-relaxed">${data.strategy}</p>
-                    </div>
-
-                    <div>
-                        <h4 class="font-semibold text-white mb-2 font-mono text-xs uppercase text-accentCyan">Tools & Tech Used</h4>
-                        <div class="flex flex-wrap gap-2">${toolsBadges}</div>
-                    </div>
-
-                    <div class="pt-2">
-                        <h4 class="font-semibold text-white mb-3 font-mono text-xs uppercase text-accentCyan">Key Impact Metrics</h4>
-                        <div class="grid grid-cols-3 gap-3">${metricsHtml}</div>
-                    </div>
-                </div>
-            `;
-
-            modal.classList.remove('hidden');
-        }
-
-        // Close Modal
-        function closeModal() {
-            document.getElementById('projectModal').classList.add('hidden');
-        }
-
-        // Close modal with Escape key
-        document.addEventListener('keydown', (event) => {
-            if (event.key === 'Escape') closeModal();
-        });
-
-        // Close modal on outside backdrop click
-        window.onclick = function(event) {
-            const modal = document.getElementById('projectModal');
-            if (event.target === modal) {
-                closeModal();
-            }
         }
     </script>
 </body>
