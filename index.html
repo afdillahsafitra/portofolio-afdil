@@ -726,6 +726,10 @@
         #projects.is-visible .project-scene:nth-child(3) { animation-delay: 0.24s; }
         #projects.is-visible .project-scene:nth-child(4) { animation-delay: 0.36s; }
         #projects.is-visible .project-scene:nth-child(5) { animation-delay: 0.48s; }
+        #projects.is-visible .project-scene:nth-child(6) { animation-delay: 0.6s; }
+        #projects.is-visible .project-scene:nth-child(7) { animation-delay: 0.72s; }
+        .project-fallback-logo { background: #fff; padding: 10px; }
+        .project-fallback-logo img { width: 100%; height: 100%; object-fit: contain; }
         @keyframes projectIn { to { opacity: 1; transform: none; } }
 
         @media (prefers-reduced-motion: reduce) {
@@ -1286,7 +1290,7 @@
                 </div>
 
                 <!-- Project 5: Moods Creative -->
-                <div class="md:col-span-2 lg:col-span-2 tilt-scene project-scene" style="--c1: 244, 63, 94; --c2: 251, 146, 60;">
+                <div class="lg:col-span-2 tilt-scene project-scene" style="--c1: 244, 63, 94; --c2: 251, 146, 60;">
                     <a data-tilt href="https://moodscreative.netlify.app/" target="_blank" rel="noopener" class="tilt-card project-card group" aria-label="Open Moods Creative">
                         <div class="project-glow" aria-hidden="true"></div>
                         <div class="project-preview">
@@ -1311,6 +1315,70 @@
                             <p class="project-desc">A creative studio website with a bold, visual-first design that presents services and work in an engaging, memorable way.</p>
                             <div class="project-footer">
                                 <div class="flex flex-wrap gap-1.5"><span class="project-chip">Branding</span><span class="project-chip">Netlify</span></div>
+                                <span class="project-cta">Live Demo <i class="fa-solid fa-arrow-up-right-from-square"></i></span>
+                            </div>
+                        </div>
+                    </a>
+                </div>
+
+                <!-- Project 6: HTS Software Developer -->
+                <div class="lg:col-span-3 tilt-scene project-scene" style="--c1: 41, 163, 219; --c2: 99, 102, 241;">
+                    <a data-tilt href="https://softwaredeveloper.humantechnologysolutions.com/" target="_blank" rel="noopener" class="tilt-card project-card group" aria-label="Open PT HTS Software Developer">
+                        <div class="project-glow" aria-hidden="true"></div>
+                        <div class="project-preview">
+                            <div class="project-bar"><span></span><span></span><span></span><em>softwaredeveloper.humantechnologysolutions.com</em></div>
+                            <div class="project-screen">
+                                <div class="project-fallback">
+                                    <div class="project-fallback-icon project-fallback-logo"><img src="assets/hts-logo-mark.webp" alt=""></div>
+                                    <div class="project-fallback-title">HTS Software Developer</div>
+                                    <div class="project-fallback-lines"><i></i><i></i><i></i></div>
+                                </div>
+                                <img src="https://image.thum.io/get/width/900/crop/620/https://softwaredeveloper.humantechnologysolutions.com/" alt="PT HTS Software Developer website preview" loading="lazy" onerror="this.remove()" class="project-shot">
+                                <div class="project-shine" aria-hidden="true"></div>
+                            </div>
+                        </div>
+                        <div class="project-float project-float-icon"><i class="fa-solid fa-laptop-code"></i></div>
+                        <div class="project-body">
+                            <div class="flex items-center justify-between gap-3">
+                                <span class="project-tag">PT HTS &middot; Software</span>
+                                <span class="project-num">06</span>
+                            </div>
+                            <h3 class="project-title">HTS Software Developer</h3>
+                            <p class="project-desc">The software development division site of PT Human Technology Solutions &mdash; presenting web, mobile, and custom software services for businesses that want to go digital.</p>
+                            <div class="project-footer">
+                                <div class="flex flex-wrap gap-1.5"><span class="project-chip">Company Site</span><span class="project-chip">Software House</span></div>
+                                <span class="project-cta">Live Demo <i class="fa-solid fa-arrow-up-right-from-square"></i></span>
+                            </div>
+                        </div>
+                    </a>
+                </div>
+
+                <!-- Project 7: HTS Akuntansi -->
+                <div class="md:col-span-2 lg:col-span-3 tilt-scene project-scene" style="--c1: 16, 185, 129; --c2: 41, 163, 219;">
+                    <a data-tilt href="https://akuntansi.humantechnologysolutions.com/" target="_blank" rel="noopener" class="tilt-card project-card group" aria-label="Open PT HTS Akuntansi">
+                        <div class="project-glow" aria-hidden="true"></div>
+                        <div class="project-preview">
+                            <div class="project-bar"><span></span><span></span><span></span><em>akuntansi.humantechnologysolutions.com</em></div>
+                            <div class="project-screen">
+                                <div class="project-fallback">
+                                    <div class="project-fallback-icon project-fallback-logo"><img src="assets/hts-logo-mark.webp" alt=""></div>
+                                    <div class="project-fallback-title">HTS Akuntansi</div>
+                                    <div class="project-fallback-lines"><i></i><i></i><i></i></div>
+                                </div>
+                                <img src="https://image.thum.io/get/width/900/crop/620/https://akuntansi.humantechnologysolutions.com/" alt="PT HTS Akuntansi preview" loading="lazy" onerror="this.remove()" class="project-shot">
+                                <div class="project-shine" aria-hidden="true"></div>
+                            </div>
+                        </div>
+                        <div class="project-float project-float-icon"><i class="fa-solid fa-calculator"></i></div>
+                        <div class="project-body">
+                            <div class="flex items-center justify-between gap-3">
+                                <span class="project-tag">PT HTS &middot; Accounting</span>
+                                <span class="project-num">07</span>
+                            </div>
+                            <h3 class="project-title">HTS Akuntansi</h3>
+                            <p class="project-desc">An accounting web application by PT Human Technology Solutions that helps businesses record transactions and keep their finances organized in one place.</p>
+                            <div class="project-footer">
+                                <div class="flex flex-wrap gap-1.5"><span class="project-chip">Web App</span><span class="project-chip">Accounting</span></div>
                                 <span class="project-cta">Live Demo <i class="fa-solid fa-arrow-up-right-from-square"></i></span>
                             </div>
                         </div>
