@@ -2013,9 +2013,11 @@
 
             <div class="chat-compose">
                 <textarea id="chatText" rows="4" class="chat-input" placeholder="Tulis pesan atau pilih template di atas..."></textarea>
-                <button type="button" onclick="sendChat()" class="chat-send" aria-label="Send on WhatsApp">
+                <!-- A real link (not window.open) so WhatsApp always opens in a new tab,
+                     even when this page is shown inside a preview frame -->
+                <a id="chatSend" href="https://wa.me/6281945337039" target="_blank" rel="noopener noreferrer" class="chat-send" aria-label="Send on WhatsApp">
                     <i class="fa-solid fa-paper-plane"></i>
-                </button>
+                </a>
             </div>
             <div class="chat-note"><i class="fa-brands fa-whatsapp"></i> Pesan akan dibuka di WhatsApp &mdash; tinggal tekan kirim.</div>
         </div>
@@ -2135,8 +2137,20 @@
         const WA_NUMBER = '6281945337039';
         const CONTACT_EMAIL = 'afdillahsafitra955@gmail.com';
 
+        function whatsAppUrl(text) {
+            return `https://wa.me/${WA_NUMBER}?text=${encodeURIComponent(text)}`;
+        }
+
+        // Open WhatsApp through a real new-tab link click. WhatsApp refuses to load
+        // inside frames, so it must never replace the current (possibly framed) page.
         function openWhatsApp(text) {
-            window.open(`https://wa.me/${WA_NUMBER}?text=${encodeURIComponent(text)}`, '_blank', 'noopener');
+            const link = document.createElement('a');
+            link.href = whatsAppUrl(text);
+            link.target = '_blank';
+            link.rel = 'noopener noreferrer';
+            document.body.appendChild(link);
+            link.click();
+            link.remove();
         }
 
         // Form Submit Handler: sends the message via WhatsApp or the visitor's email app
@@ -2233,17 +2247,28 @@
             toggleChat(true);
         }
 
+        const chatSend = document.getElementById('chatSend');
+
+        // Keep the send link's href in sync with the message so a click opens it directly
+        function updateChatLink() {
+            chatSend.href = whatsAppUrl(chatText.value.trim() || CHAT_TEMPLATES.hello);
+        }
+
         function useTemplate(key) {
             chatText.value = CHAT_TEMPLATES[key] || '';
             document.querySelectorAll('.chat-chip').forEach(chip => {
                 chip.classList.toggle('is-active', chip.dataset.template === key);
             });
+            updateChatLink();
         }
 
         function sendChat() {
-            const text = chatText.value.trim() || CHAT_TEMPLATES.hello;
-            openWhatsApp(text);
+            updateChatLink();
+            chatSend.click();
         }
+
+        chatText.addEventListener('input', updateChatLink);
+        updateChatLink();
 
         document.querySelectorAll('.chat-chip').forEach(chip => {
             chip.addEventListener('click', () => useTemplate(chip.dataset.template));
