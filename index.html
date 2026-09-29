@@ -105,6 +105,20 @@
         .animate-pulse-glow {
             animation: pulseGlow 4s infinite ease-in-out;
         }
+
+        /* Scroll Reveal Animation */
+        .reveal {
+            opacity: 0;
+            transform: translateY(24px);
+            transition: opacity 0.7s ease, transform 0.7s ease;
+        }
+        .reveal.is-visible {
+            opacity: 1;
+            transform: none;
+        }
+        @media (prefers-reduced-motion: reduce) {
+            .reveal { opacity: 1; transform: none; transition: none; }
+        }
     </style>
 </head>
 <body class="bg-grid-pattern min-h-screen relative">
@@ -127,7 +141,10 @@
 
             <!-- Desktop Nav Links -->
             <nav class="hidden md:flex items-center gap-8 font-medium text-sm text-gray-300">
+                <a href="#about" class="hover:text-accentCyan transition-colors">About</a>
                 <a href="#projects" class="hover:text-accentCyan transition-colors">Projects</a>
+                <a href="#services" class="hover:text-accentCyan transition-colors">Services</a>
+                <a href="#experience" class="hover:text-accentCyan transition-colors">Experience</a>
                 <a href="#growth" class="hover:text-accentCyan transition-colors">Case Studies</a>
                 <a href="#skills" class="hover:text-accentCyan transition-colors">Skills & Tools</a>
                 <a href="#contact" class="hover:text-accentCyan transition-colors">Contact</a>
@@ -152,7 +169,10 @@
 
         <!-- Mobile Menu Dropdown -->
         <div id="mobileMenu" class="hidden md:hidden glass-card border-t border-gray-800 px-6 py-6 space-y-4">
+            <a href="#about" class="block text-gray-300 hover:text-accentCyan py-2 text-base font-medium">About</a>
             <a href="#projects" class="block text-gray-300 hover:text-accentCyan py-2 text-base font-medium">Projects</a>
+            <a href="#services" class="block text-gray-300 hover:text-accentCyan py-2 text-base font-medium">Services</a>
+            <a href="#experience" class="block text-gray-300 hover:text-accentCyan py-2 text-base font-medium">Experience</a>
             <a href="#growth" class="block text-gray-300 hover:text-accentCyan py-2 text-base font-medium">Case Studies</a>
             <a href="#skills" class="block text-gray-300 hover:text-accentCyan py-2 text-base font-medium">Skills & Tools</a>
             <a href="#contact" class="block text-gray-300 hover:text-accentCyan py-2 text-base font-medium">Contact</a>
@@ -287,8 +307,81 @@
             </div>
         </section>
 
+        <!-- About Me Section -->
+        <section id="about" class="reveal grid grid-cols-1 lg:grid-cols-12 gap-10 items-center scroll-mt-28">
+            <!-- Profile Visual -->
+            <div class="lg:col-span-5">
+                <div class="relative mx-auto max-w-sm">
+                    <div class="absolute -inset-2 bg-gradient-to-br from-accentViolet to-accentCyan rounded-3xl blur-2xl opacity-25 -z-10"></div>
+                    <div class="glass-card rounded-3xl p-3 border border-white/10">
+                        <!-- Replace the initials block with <img src="your-photo.jpg" ...> when ready -->
+                        <div class="aspect-[4/5] rounded-2xl bg-gradient-to-br from-indigo-900/60 via-darkBg to-cyan-900/40 border border-gray-800 flex flex-col items-center justify-center gap-4 relative overflow-hidden">
+                            <div class="absolute inset-0 bg-grid-pattern opacity-60"></div>
+                            <div class="relative w-28 h-28 rounded-full bg-gradient-to-br from-accentViolet to-accentCyan p-[2px]">
+                                <div class="w-full h-full rounded-full bg-darkBg flex items-center justify-center">
+                                    <span class="text-4xl font-extrabold text-gradient">AS</span>
+                                </div>
+                            </div>
+                            <div class="relative text-center">
+                                <p class="font-bold text-white">Afdillah Safitra</p>
+                                <p class="text-xs font-mono text-gray-400">Social Media Specialist</p>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Floating Badges -->
+                    <div class="absolute -right-4 top-8 glass-card rounded-xl px-3 py-2 border border-accentCyan/30 text-xs font-mono flex items-center gap-2 shadow-glowCyan">
+                        <i class="fa-solid fa-location-dot text-accentCyan"></i>
+                        <span class="text-gray-200">Indonesia</span>
+                    </div>
+                    <div class="absolute -left-4 bottom-10 glass-card rounded-xl px-3 py-2 border border-accentViolet/30 text-xs font-mono flex items-center gap-2 shadow-glowViolet">
+                        <i class="fa-solid fa-bolt text-accentViolet"></i>
+                        <span class="text-gray-200">3+ Years Creating</span>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Bio Content -->
+            <div class="lg:col-span-7 space-y-6">
+                <div>
+                    <span class="text-xs font-mono uppercase tracking-widest text-accentCyan">About Me</span>
+                    <h2 class="text-3xl sm:text-4xl font-bold text-white mt-1">Storyteller at Heart, <span class="text-accent-gradient">Data-Driven</span> by Habit.</h2>
+                </div>
+                <p class="text-gray-400 leading-relaxed">
+                    I help brands turn scrolling into stopping. My work sits at the intersection of short-form video editing, apparel visualization, and social media strategy &mdash; blending creative instinct with performance metrics to build content that people actually watch, share, and buy from.
+                </p>
+                <p class="text-gray-400 leading-relaxed">
+                    From scripting the first 1.5 seconds of a reel to rendering a boxy tee before it's ever sampled, I care about every detail that moves the needle for a brand.
+                </p>
+
+                <!-- Quick Facts Grid -->
+                <div class="grid grid-cols-2 sm:grid-cols-4 gap-3 pt-2">
+                    <div class="p-4 rounded-2xl bg-darkBg/80 border border-gray-800 text-center">
+                        <i class="fa-solid fa-video text-accentViolet text-lg"></i>
+                        <div class="text-lg font-bold font-mono text-white mt-2">300+</div>
+                        <div class="text-[10px] text-gray-400">Videos Edited</div>
+                    </div>
+                    <div class="p-4 rounded-2xl bg-darkBg/80 border border-gray-800 text-center">
+                        <i class="fa-solid fa-shirt text-purple-400 text-lg"></i>
+                        <div class="text-lg font-bold font-mono text-white mt-2">50+</div>
+                        <div class="text-[10px] text-gray-400">3D Mockups</div>
+                    </div>
+                    <div class="p-4 rounded-2xl bg-darkBg/80 border border-gray-800 text-center">
+                        <i class="fa-solid fa-handshake text-emerald-400 text-lg"></i>
+                        <div class="text-lg font-bold font-mono text-white mt-2">25+</div>
+                        <div class="text-[10px] text-gray-400">Happy Clients</div>
+                    </div>
+                    <div class="p-4 rounded-2xl bg-darkBg/80 border border-gray-800 text-center">
+                        <i class="fa-solid fa-language text-accentCyan text-lg"></i>
+                        <div class="text-lg font-bold font-mono text-white mt-2">ID / EN</div>
+                        <div class="text-[10px] text-gray-400">Languages</div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
         <!-- Bento Grid Portfolio Showcase -->
-        <section id="projects" class="space-y-8">
+        <section id="projects" class="reveal space-y-8 scroll-mt-28">
             <div class="flex flex-col md:flex-row md:items-end justify-between gap-4 border-b border-gray-800 pb-6">
                 <div>
                     <span class="text-xs font-mono uppercase tracking-widest text-accentCyan">Interactive Showcase</span>
@@ -437,8 +530,148 @@
             </div>
         </section>
 
+        <!-- Services & Work Process Section -->
+        <section id="services" class="reveal space-y-8 scroll-mt-28">
+            <div class="flex flex-col md:flex-row md:items-end justify-between gap-4 border-b border-gray-800 pb-6">
+                <div>
+                    <span class="text-xs font-mono uppercase tracking-widest text-accentCyan">What I Offer</span>
+                    <h2 class="text-3xl sm:text-4xl font-bold text-white mt-1">Services Built for Growth</h2>
+                </div>
+                <p class="text-sm text-gray-400 max-w-md">Flexible packages for brands, creators, and teams &mdash; from one-off edits to full monthly retainers.</p>
+            </div>
+
+            <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-6">
+                <div class="group glass-card rounded-3xl p-6 border border-gray-800 hover:border-accentViolet/50 hover:-translate-y-1 transition-all duration-300">
+                    <div class="w-12 h-12 rounded-2xl bg-accentViolet/20 text-accentViolet flex items-center justify-center text-xl group-hover:scale-110 transition-transform">
+                        <i class="fa-solid fa-clapperboard"></i>
+                    </div>
+                    <h3 class="text-base font-bold text-white mt-5">Short-Form Video Editing</h3>
+                    <p class="text-xs text-gray-400 mt-2 leading-relaxed">Reels, TikTok & Shorts with punchy hooks, captions, sound design, and trend-aware pacing.</p>
+                    <ul class="mt-4 space-y-1.5 text-xs text-gray-300">
+                        <li><i class="fa-solid fa-check text-accentViolet mr-2"></i>Hook-first editing</li>
+                        <li><i class="fa-solid fa-check text-accentViolet mr-2"></i>Auto captions & motion text</li>
+                    </ul>
+                </div>
+                <div class="group glass-card rounded-3xl p-6 border border-gray-800 hover:border-accentCyan/50 hover:-translate-y-1 transition-all duration-300">
+                    <div class="w-12 h-12 rounded-2xl bg-cyan-500/20 text-accentCyan flex items-center justify-center text-xl group-hover:scale-110 transition-transform">
+                        <i class="fa-solid fa-hashtag"></i>
+                    </div>
+                    <h3 class="text-base font-bold text-white mt-5">Social Media Management</h3>
+                    <p class="text-xs text-gray-400 mt-2 leading-relaxed">Content calendars, posting, community engagement, and monthly performance reports.</p>
+                    <ul class="mt-4 space-y-1.5 text-xs text-gray-300">
+                        <li><i class="fa-solid fa-check text-accentCyan mr-2"></i>Monthly content plan</li>
+                        <li><i class="fa-solid fa-check text-accentCyan mr-2"></i>Analytics & insights</li>
+                    </ul>
+                </div>
+                <div class="group glass-card rounded-3xl p-6 border border-gray-800 hover:border-purple-500/50 hover:-translate-y-1 transition-all duration-300">
+                    <div class="w-12 h-12 rounded-2xl bg-purple-500/20 text-purple-300 flex items-center justify-center text-xl group-hover:scale-110 transition-transform">
+                        <i class="fa-solid fa-cube"></i>
+                    </div>
+                    <h3 class="text-base font-bold text-white mt-5">3D Apparel Mockups</h3>
+                    <p class="text-xs text-gray-400 mt-2 leading-relaxed">Realistic garment renders for pre-orders, catalogs, and launch campaigns &mdash; before sampling.</p>
+                    <ul class="mt-4 space-y-1.5 text-xs text-gray-300">
+                        <li><i class="fa-solid fa-check text-purple-300 mr-2"></i>Boxy & oversized fits</li>
+                        <li><i class="fa-solid fa-check text-purple-300 mr-2"></i>Multi-angle renders</li>
+                    </ul>
+                </div>
+                <div class="group glass-card rounded-3xl p-6 border border-gray-800 hover:border-emerald-500/50 hover:-translate-y-1 transition-all duration-300">
+                    <div class="w-12 h-12 rounded-2xl bg-emerald-500/20 text-emerald-300 flex items-center justify-center text-xl group-hover:scale-110 transition-transform">
+                        <i class="fa-solid fa-bullhorn"></i>
+                    </div>
+                    <h3 class="text-base font-bold text-white mt-5">Ad Creative & Copy</h3>
+                    <p class="text-xs text-gray-400 mt-2 leading-relaxed">Scroll-stopping ad creatives and scripts for Meta & TikTok performance campaigns.</p>
+                    <ul class="mt-4 space-y-1.5 text-xs text-gray-300">
+                        <li><i class="fa-solid fa-check text-emerald-300 mr-2"></i>A/B hook variations</li>
+                        <li><i class="fa-solid fa-check text-emerald-300 mr-2"></i>Conversion-focused copy</li>
+                    </ul>
+                </div>
+            </div>
+
+            <!-- Work Process Steps -->
+            <div class="glass-card rounded-3xl p-6 sm:p-8 border border-gray-800">
+                <h3 class="text-sm font-mono uppercase tracking-widest text-gray-400 mb-6">How We'll Work Together</h3>
+                <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-6">
+                    <div class="flex gap-4">
+                        <div class="text-3xl font-extrabold font-mono text-accent-gradient">01</div>
+                        <div>
+                            <h4 class="font-semibold text-white text-sm">Discovery</h4>
+                            <p class="text-xs text-gray-400 mt-1">Understand your brand, audience, and goals.</p>
+                        </div>
+                    </div>
+                    <div class="flex gap-4">
+                        <div class="text-3xl font-extrabold font-mono text-accent-gradient">02</div>
+                        <div>
+                            <h4 class="font-semibold text-white text-sm">Strategy</h4>
+                            <p class="text-xs text-gray-400 mt-1">Map content pillars, hooks, and a posting plan.</p>
+                        </div>
+                    </div>
+                    <div class="flex gap-4">
+                        <div class="text-3xl font-extrabold font-mono text-accent-gradient">03</div>
+                        <div>
+                            <h4 class="font-semibold text-white text-sm">Production</h4>
+                            <p class="text-xs text-gray-400 mt-1">Edit, design, and render with fast revisions.</p>
+                        </div>
+                    </div>
+                    <div class="flex gap-4">
+                        <div class="text-3xl font-extrabold font-mono text-accent-gradient">04</div>
+                        <div>
+                            <h4 class="font-semibold text-white text-sm">Analyze & Scale</h4>
+                            <p class="text-xs text-gray-400 mt-1">Track results and double down on what works.</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Experience Timeline Section -->
+        <section id="experience" class="reveal grid grid-cols-1 lg:grid-cols-12 gap-10 scroll-mt-28">
+            <div class="lg:col-span-4 space-y-3">
+                <span class="text-xs font-mono uppercase tracking-widest text-accentCyan">Journey</span>
+                <h2 class="text-3xl sm:text-4xl font-bold text-white">Experience & Milestones</h2>
+                <p class="text-sm text-gray-400">A snapshot of the roles and collaborations that shaped how I create and grow brands.</p>
+            </div>
+
+            <div class="lg:col-span-8">
+                <ol class="relative border-l border-gray-800 ml-3 space-y-8">
+                    <li class="pl-8 relative">
+                        <span class="absolute -left-[9px] top-1.5 w-4 h-4 rounded-full bg-gradient-to-br from-accentViolet to-accentCyan ring-4 ring-darkBg"></span>
+                        <div class="glass-card rounded-2xl p-5 border border-gray-800 hover:border-accentViolet/40 transition-colors">
+                            <div class="flex flex-wrap items-center justify-between gap-2">
+                                <h3 class="font-bold text-white">Social Media Specialist</h3>
+                                <span class="px-2.5 py-1 rounded-md bg-accentViolet/20 text-accentViolet text-[10px] font-mono">2024 &ndash; Present</span>
+                            </div>
+                            <p class="text-xs font-mono text-accentCyan mt-1">Freelance &middot; Streetwear & Lifestyle Brands</p>
+                            <p class="text-sm text-gray-400 mt-3">Leading content strategy and short-form production for apparel brands, growing reach and turning engagement into sales.</p>
+                        </div>
+                    </li>
+                    <li class="pl-8 relative">
+                        <span class="absolute -left-[9px] top-1.5 w-4 h-4 rounded-full bg-gray-700 ring-4 ring-darkBg"></span>
+                        <div class="glass-card rounded-2xl p-5 border border-gray-800 hover:border-accentCyan/40 transition-colors">
+                            <div class="flex flex-wrap items-center justify-between gap-2">
+                                <h3 class="font-bold text-white">Video Editor & Content Creator</h3>
+                                <span class="px-2.5 py-1 rounded-md bg-gray-800 text-gray-300 text-[10px] font-mono">2023 &ndash; 2024</span>
+                            </div>
+                            <p class="text-xs font-mono text-accentCyan mt-1">Agency & Creator Collaborations</p>
+                            <p class="text-sm text-gray-400 mt-3">Edited high-retention reels and TikToks for creators and small businesses, building a library of proven hook formats.</p>
+                        </div>
+                    </li>
+                    <li class="pl-8 relative">
+                        <span class="absolute -left-[9px] top-1.5 w-4 h-4 rounded-full bg-gray-700 ring-4 ring-darkBg"></span>
+                        <div class="glass-card rounded-2xl p-5 border border-gray-800 hover:border-purple-500/40 transition-colors">
+                            <div class="flex flex-wrap items-center justify-between gap-2">
+                                <h3 class="font-bold text-white">3D Apparel & Graphic Designer</h3>
+                                <span class="px-2.5 py-1 rounded-md bg-gray-800 text-gray-300 text-[10px] font-mono">2022 &ndash; 2023</span>
+                            </div>
+                            <p class="text-xs font-mono text-accentCyan mt-1">Independent Projects</p>
+                            <p class="text-sm text-gray-400 mt-3">Started designing boxy tee mockups and brand visuals, learning SketchUp, Photoshop, and 3D garment rendering.</p>
+                        </div>
+                    </li>
+                </ol>
+            </div>
+        </section>
+
         <!-- Interactive Skills & Toolstack Section -->
-        <section id="skills" class="space-y-8 glass-card rounded-3xl p-8 sm:p-12 border border-gray-800">
+        <section id="skills" class="reveal space-y-8 glass-card rounded-3xl p-8 sm:p-12 border border-gray-800 scroll-mt-28">
             <div class="max-w-2xl">
                 <span class="text-xs font-mono uppercase tracking-widest text-accentCyan">Core Capabilities</span>
                 <h2 class="text-3xl font-bold text-white mt-1">Skills & Production Stack</h2>
@@ -447,10 +680,10 @@
 
             <!-- Category Filter Buttons -->
             <div class="flex flex-wrap gap-2 pt-2" id="skillFilters">
-                <button onclick="filterSkills('all')" class="skill-btn active px-4 py-2 rounded-xl text-xs font-mono font-semibold bg-accentViolet text-white transition-all">All Skills</button>
-                <button onclick="filterSkills('video')" class="skill-btn px-4 py-2 rounded-xl text-xs font-mono font-semibold bg-darkBg text-gray-400 hover:text-white border border-gray-800 transition-all">Video & Motion</button>
-                <button onclick="filterSkills('design')" class="skill-btn px-4 py-2 rounded-xl text-xs font-mono font-semibold bg-darkBg text-gray-400 hover:text-white border border-gray-800 transition-all">3D & Visual Design</button>
-                <button onclick="filterSkills('strategy')" class="skill-btn px-4 py-2 rounded-xl text-xs font-mono font-semibold bg-darkBg text-gray-400 hover:text-white border border-gray-800 transition-all">Strategy & Growth</button>
+                <button onclick="filterSkills('all', this)" class="skill-btn active px-4 py-2 rounded-xl text-xs font-mono font-semibold bg-accentViolet text-white transition-all">All Skills</button>
+                <button onclick="filterSkills('video', this)" class="skill-btn px-4 py-2 rounded-xl text-xs font-mono font-semibold bg-darkBg text-gray-400 hover:text-white border border-gray-800 transition-all">Video & Motion</button>
+                <button onclick="filterSkills('design', this)" class="skill-btn px-4 py-2 rounded-xl text-xs font-mono font-semibold bg-darkBg text-gray-400 hover:text-white border border-gray-800 transition-all">3D & Visual Design</button>
+                <button onclick="filterSkills('strategy', this)" class="skill-btn px-4 py-2 rounded-xl text-xs font-mono font-semibold bg-darkBg text-gray-400 hover:text-white border border-gray-800 transition-all">Strategy & Growth</button>
             </div>
 
             <!-- Skill Chips Grid -->
@@ -494,8 +727,58 @@
             </div>
         </section>
 
+        <!-- Testimonials Section -->
+        <section id="testimonials" class="reveal space-y-8">
+            <div class="text-center max-w-2xl mx-auto">
+                <span class="text-xs font-mono uppercase tracking-widest text-accentCyan">Kind Words</span>
+                <h2 class="text-3xl sm:text-4xl font-bold text-white mt-1">What Clients Say</h2>
+            </div>
+
+            <div class="grid grid-cols-1 md:grid-cols-3 gap-6">
+                <figure class="glass-card rounded-3xl p-6 border border-gray-800 hover:border-accentViolet/40 transition-colors flex flex-col justify-between">
+                    <div>
+                        <div class="text-amber-400 text-xs space-x-0.5"><i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i></div>
+                        <blockquote class="text-sm text-gray-300 mt-4 leading-relaxed">"Our reels went from a few hundred views to consistently hitting 50K+. The hooks and pacing are on another level."</blockquote>
+                    </div>
+                    <figcaption class="flex items-center gap-3 mt-6 pt-4 border-t border-gray-800">
+                        <div class="w-10 h-10 rounded-full bg-accentViolet/20 text-accentViolet flex items-center justify-center font-bold text-sm">RS</div>
+                        <div>
+                            <div class="text-sm font-semibold text-white">Brand Owner</div>
+                            <div class="text-[10px] font-mono text-gray-500">Local Streetwear Label</div>
+                        </div>
+                    </figcaption>
+                </figure>
+                <figure class="glass-card rounded-3xl p-6 border border-gray-800 hover:border-accentCyan/40 transition-colors flex flex-col justify-between">
+                    <div>
+                        <div class="text-amber-400 text-xs space-x-0.5"><i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i></div>
+                        <blockquote class="text-sm text-gray-300 mt-4 leading-relaxed">"The 3D mockups let us open pre-orders weeks before production. Saved us time and a lot of sampling cost."</blockquote>
+                    </div>
+                    <figcaption class="flex items-center gap-3 mt-6 pt-4 border-t border-gray-800">
+                        <div class="w-10 h-10 rounded-full bg-cyan-500/20 text-accentCyan flex items-center justify-center font-bold text-sm">DP</div>
+                        <div>
+                            <div class="text-sm font-semibold text-white">Product Lead</div>
+                            <div class="text-[10px] font-mono text-gray-500">Apparel Startup</div>
+                        </div>
+                    </figcaption>
+                </figure>
+                <figure class="glass-card rounded-3xl p-6 border border-gray-800 hover:border-emerald-500/40 transition-colors flex flex-col justify-between">
+                    <div>
+                        <div class="text-amber-400 text-xs space-x-0.5"><i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i></div>
+                        <blockquote class="text-sm text-gray-300 mt-4 leading-relaxed">"Fast, communicative, and genuinely strategic. Every video came with a reason behind it, not just nice edits."</blockquote>
+                    </div>
+                    <figcaption class="flex items-center gap-3 mt-6 pt-4 border-t border-gray-800">
+                        <div class="w-10 h-10 rounded-full bg-emerald-500/20 text-emerald-300 flex items-center justify-center font-bold text-sm">AN</div>
+                        <div>
+                            <div class="text-sm font-semibold text-white">Content Creator</div>
+                            <div class="text-[10px] font-mono text-gray-500">Lifestyle Niche</div>
+                        </div>
+                    </figcaption>
+                </figure>
+            </div>
+        </section>
+
         <!-- Contact & Quick Form Section -->
-        <section id="contact" class="grid grid-cols-1 lg:grid-cols-12 gap-8 items-start">
+        <section id="contact" class="reveal grid grid-cols-1 lg:grid-cols-12 gap-8 items-start scroll-mt-28">
             <!-- Left Contact Info -->
             <div class="lg:col-span-5 space-y-6">
                 <span class="text-xs font-mono uppercase tracking-widest text-accentCyan">Let's Connect</span>
@@ -601,6 +884,11 @@
         </div>
     </div>
 
+    <!-- Back to Top Button -->
+    <button id="backToTop" onclick="window.scrollTo({ top: 0, behavior: 'smooth' })" class="fixed bottom-6 left-6 z-40 w-11 h-11 rounded-xl glass-card border border-gray-700 text-accentCyan hover:text-white hover:border-accentCyan items-center justify-center shadow-glowCyan transition-all hidden" aria-label="Back to top">
+        <i class="fa-solid fa-arrow-up"></i>
+    </button>
+
     <!-- Notification Toast -->
     <div id="toast" class="fixed bottom-6 right-6 z-50 hidden glass-card border border-emerald-500/40 text-white px-5 py-3 rounded-2xl shadow-xl flex items-center gap-3">
         <i class="fa-solid fa-circle-check text-emerald-400 text-lg"></i>
@@ -614,6 +902,35 @@
 
         mobileMenuBtn.addEventListener('click', () => {
             mobileMenu.classList.toggle('hidden');
+        });
+
+        // Close mobile menu after picking a link
+        mobileMenu.querySelectorAll('a').forEach(link => {
+            link.addEventListener('click', () => mobileMenu.classList.add('hidden'));
+        });
+
+        // Scroll Reveal
+        const revealEls = document.querySelectorAll('.reveal');
+        if ('IntersectionObserver' in window) {
+            const revealObserver = new IntersectionObserver((entries) => {
+                entries.forEach(entry => {
+                    if (entry.isIntersecting) {
+                        entry.target.classList.add('is-visible');
+                        revealObserver.unobserve(entry.target);
+                    }
+                });
+            }, { threshold: 0.12 });
+            revealEls.forEach(el => revealObserver.observe(el));
+        } else {
+            revealEls.forEach(el => el.classList.add('is-visible'));
+        }
+
+        // Back to Top visibility
+        const backToTop = document.getElementById('backToTop');
+        window.addEventListener('scroll', () => {
+            const show = window.scrollY > 600;
+            backToTop.classList.toggle('hidden', !show);
+            backToTop.classList.toggle('flex', show);
         });
 
         // Copy Email function
@@ -662,7 +979,7 @@
         }
 
         // Filter Skills Logic
-        function filterSkills(category) {
+        function filterSkills(category, activeBtn) {
             const buttons = document.querySelectorAll('.skill-btn');
             const cards = document.querySelectorAll('.skill-card');
 
@@ -671,8 +988,8 @@
                 btn.classList.add('bg-darkBg', 'text-gray-400');
             });
 
-            event.target.classList.remove('bg-darkBg', 'text-gray-400');
-            event.target.classList.add('bg-accentViolet', 'text-white');
+            activeBtn.classList.remove('bg-darkBg', 'text-gray-400');
+            activeBtn.classList.add('bg-accentViolet', 'text-white');
 
             cards.forEach(card => {
                 if (category === 'all' || card.classList.contains(category)) {
@@ -788,6 +1105,11 @@
         function closeModal() {
             document.getElementById('projectModal').classList.add('hidden');
         }
+
+        // Close modal with Escape key
+        document.addEventListener('keydown', (event) => {
+            if (event.key === 'Escape') closeModal();
+        });
 
         // Close modal on outside backdrop click
         window.onclick = function(event) {
