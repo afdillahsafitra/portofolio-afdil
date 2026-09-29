@@ -729,6 +729,31 @@
         #projects.is-visible .project-scene:nth-child(6) { animation-delay: 0.6s; }
         #projects.is-visible .project-scene:nth-child(7) { animation-delay: 0.72s; }
         .project-fallback-logo { background: #fff; padding: 10px; }
+        /* Real project logo shown as the card's profile image */
+        .project-logo {
+            position: relative;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            padding: 14px;
+            border-radius: 24px;
+            background: var(--logo-bg);
+            border: 1px solid rgba(255,255,255,0.14);
+            box-shadow: 0 24px 48px -14px rgba(var(--c1), 0.75), 0 0 60px -6px rgba(var(--c2), 0.55), 0 0 0 6px rgba(255,255,255,0.04), inset 0 1px 0 rgba(255,255,255,0.2);
+            animation: floatY 6s ease-in-out infinite;
+            transition: transform 0.6s cubic-bezier(.2,.8,.2,1);
+        }
+        .project-logo img { display: block; width: auto; height: 96px; max-width: 100%; object-fit: contain; }
+        .project-logo-wide { padding: 18px 24px; max-width: 86%; }
+        .project-logo-wide img { height: 46px; }
+        .project-card:hover .project-logo { transform: scale(1.06); }
+        @media (max-width: 640px) {
+            .project-logo img { height: 76px; }
+            .project-logo-wide img { height: 34px; }
+        }
+        @media (prefers-reduced-motion: reduce) {
+            .project-logo { animation: none; }
+        }
         .project-fallback-logo img { width: 100%; height: 100%; object-fit: contain; }
         @keyframes projectIn { to { opacity: 1; transform: none; } }
 
@@ -1162,31 +1187,28 @@
             <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-6 gap-8">
 
                 <!-- Project 1: Teknisi 25 Jam -->
-                <div class="lg:col-span-3 tilt-scene project-scene" style="--c1: 249, 115, 22; --c2: 250, 204, 21;">
+                <div class="lg:col-span-3 tilt-scene project-scene" style="--c1: 59, 110, 170; --c2: 96, 165, 250;">
                     <a data-tilt href="https://teknisi25jam.netlify.app/" target="_blank" rel="noopener" class="tilt-card project-card group" aria-label="Open Teknisi 25 Jam">
                         <div class="project-glow" aria-hidden="true"></div>
                         <div class="project-preview">
                             <div class="project-bar"><span></span><span></span><span></span><em>teknisi25jam.netlify.app</em></div>
                             <div class="project-screen">
                                 <div class="project-fallback">
-                                    <div class="project-fallback-icon"><i class="fa-solid fa-screwdriver-wrench"></i></div>
-                                    <div class="project-fallback-title">Teknisi 25 Jam</div>
-                                    <div class="project-fallback-lines"><i></i><i></i><i></i></div>
+                                    <div class="project-logo" style="--logo-bg: #FFFFFF;"><img src="assets/projects/teknisi25jam.webp" alt="Studio Inventory logo"></div>
                                 </div>
-                                <img src="https://image.thum.io/get/width/900/crop/620/https://teknisi25jam.netlify.app/" alt="Teknisi 25 Jam website preview" loading="lazy" onerror="this.remove()" class="project-shot">
                                 <div class="project-shine" aria-hidden="true"></div>
                             </div>
                         </div>
-                        <div class="project-float project-float-icon"><i class="fa-solid fa-screwdriver-wrench"></i></div>
+                        <div class="project-float project-float-icon"><i class="fa-solid fa-boxes-stacked"></i></div>
                         <div class="project-body">
                             <div class="flex items-center justify-between gap-3">
-                                <span class="project-tag">Service Website</span>
+                                <span class="project-tag">Inventory App</span>
                                 <span class="project-num">01</span>
                             </div>
                             <h3 class="project-title">Teknisi 25 Jam</h3>
-                            <p class="project-desc">A technician service website that helps customers find repair help fast &mdash; presenting services clearly and making it easy to get in touch and book a technician.</p>
+                            <p class="project-desc">Studio Inventory &mdash; an inventory management web app for recording stock, tracking items, and keeping studio equipment organized and easy to find.</p>
                             <div class="project-footer">
-                                <div class="flex flex-wrap gap-1.5"><span class="project-chip">Responsive</span><span class="project-chip">Netlify</span></div>
+                                <div class="flex flex-wrap gap-1.5"><span class="project-chip">Inventory</span><span class="project-chip">Netlify</span></div>
                                 <span class="project-cta">Live Demo <i class="fa-solid fa-arrow-up-right-from-square"></i></span>
                             </div>
                         </div>
@@ -1194,18 +1216,15 @@
                 </div>
 
                 <!-- Project 2: Lokin App -->
-                <div class="lg:col-span-3 tilt-scene project-scene" style="--c1: 99, 102, 241; --c2: 34, 211, 238;">
+                <div class="lg:col-span-3 tilt-scene project-scene" style="--c1: 11, 132, 199; --c2: 56, 189, 248;">
                     <a data-tilt href="https://lokin-app.web.app/" target="_blank" rel="noopener" class="tilt-card project-card group" aria-label="Open Lokin App">
                         <div class="project-glow" aria-hidden="true"></div>
                         <div class="project-preview">
                             <div class="project-bar"><span></span><span></span><span></span><em>lokin-app.web.app</em></div>
                             <div class="project-screen">
                                 <div class="project-fallback">
-                                    <div class="project-fallback-icon"><i class="fa-solid fa-location-dot"></i></div>
-                                    <div class="project-fallback-title">Lokin App</div>
-                                    <div class="project-fallback-lines"><i></i><i></i><i></i></div>
+                                    <div class="project-logo" style="--logo-bg: #0B0B0C;"><img src="assets/projects/lokin-app.webp" alt="Lokin App logo"></div>
                                 </div>
-                                <img src="https://image.thum.io/get/width/900/crop/620/https://lokin-app.web.app/" alt="Lokin App preview" loading="lazy" onerror="this.remove()" class="project-shot">
                                 <div class="project-shine" aria-hidden="true"></div>
                             </div>
                         </div>
@@ -1258,31 +1277,28 @@
                 </div>
 
                 <!-- Project 4: Jejaring -->
-                <div class="lg:col-span-2 tilt-scene project-scene" style="--c1: 168, 85, 247; --c2: 236, 72, 153;">
+                <div class="lg:col-span-2 tilt-scene project-scene" style="--c1: 64, 160, 80; --c2: 202, 168, 74;">
                     <a data-tilt href="https://jejaring.netlify.app/" target="_blank" rel="noopener" class="tilt-card project-card group" aria-label="Open Jejaring">
                         <div class="project-glow" aria-hidden="true"></div>
                         <div class="project-preview">
                             <div class="project-bar"><span></span><span></span><span></span><em>jejaring.netlify.app</em></div>
                             <div class="project-screen">
                                 <div class="project-fallback">
-                                    <div class="project-fallback-icon"><i class="fa-solid fa-circle-nodes"></i></div>
-                                    <div class="project-fallback-title">Jejaring</div>
-                                    <div class="project-fallback-lines"><i></i><i></i><i></i></div>
+                                    <div class="project-logo project-logo-wide" style="--logo-bg: #0A0F0A;"><img src="assets/projects/jejaring.webp" alt="Waring Hitam Premium logo"></div>
                                 </div>
-                                <img src="https://image.thum.io/get/width/900/crop/620/https://jejaring.netlify.app/" alt="Jejaring website preview" loading="lazy" onerror="this.remove()" class="project-shot">
                                 <div class="project-shine" aria-hidden="true"></div>
                             </div>
                         </div>
-                        <div class="project-float project-float-icon"><i class="fa-solid fa-users"></i></div>
+                        <div class="project-float project-float-icon"><i class="fa-solid fa-store"></i></div>
                         <div class="project-body">
                             <div class="flex items-center justify-between gap-3">
-                                <span class="project-tag">Community Platform</span>
+                                <span class="project-tag">Product Store</span>
                                 <span class="project-num">04</span>
                             </div>
                             <h3 class="project-title">Jejaring</h3>
-                            <p class="project-desc">A networking platform that connects people and communities in one place, with a friendly interface that encourages sharing and collaboration.</p>
+                            <p class="project-desc">Waring Hitam Premium &mdash; a product website for premium black netting (waring), presenting products and their uses with an elegant dark-and-gold look and easy ordering.</p>
                             <div class="project-footer">
-                                <div class="flex flex-wrap gap-1.5"><span class="project-chip">Community</span><span class="project-chip">Netlify</span></div>
+                                <div class="flex flex-wrap gap-1.5"><span class="project-chip">E-Commerce</span><span class="project-chip">Netlify</span></div>
                                 <span class="project-cta">Live Demo <i class="fa-solid fa-arrow-up-right-from-square"></i></span>
                             </div>
                         </div>
@@ -1290,31 +1306,28 @@
                 </div>
 
                 <!-- Project 5: Moods Creative -->
-                <div class="lg:col-span-2 tilt-scene project-scene" style="--c1: 244, 63, 94; --c2: 251, 146, 60;">
+                <div class="lg:col-span-2 tilt-scene project-scene" style="--c1: 240, 32, 48; --c2: 255, 110, 110;">
                     <a data-tilt href="https://moodscreative.netlify.app/" target="_blank" rel="noopener" class="tilt-card project-card group" aria-label="Open Moods Creative">
                         <div class="project-glow" aria-hidden="true"></div>
                         <div class="project-preview">
                             <div class="project-bar"><span></span><span></span><span></span><em>moodscreative.netlify.app</em></div>
                             <div class="project-screen">
                                 <div class="project-fallback">
-                                    <div class="project-fallback-icon"><i class="fa-solid fa-palette"></i></div>
-                                    <div class="project-fallback-title">Moods Creative</div>
-                                    <div class="project-fallback-lines"><i></i><i></i><i></i></div>
+                                    <div class="project-logo project-logo-wide" style="--logo-bg: #010307;"><img src="assets/projects/moodscreative.webp" alt="AIStudio logo"></div>
                                 </div>
-                                <img src="https://image.thum.io/get/width/900/crop/620/https://moodscreative.netlify.app/" alt="Moods Creative website preview" loading="lazy" onerror="this.remove()" class="project-shot">
                                 <div class="project-shine" aria-hidden="true"></div>
                             </div>
                         </div>
                         <div class="project-float project-float-icon"><i class="fa-solid fa-wand-magic-sparkles"></i></div>
                         <div class="project-body">
                             <div class="flex items-center justify-between gap-3">
-                                <span class="project-tag">Creative Studio</span>
+                                <span class="project-tag">AI Studio</span>
                                 <span class="project-num">05</span>
                             </div>
                             <h3 class="project-title">Moods Creative</h3>
-                            <p class="project-desc">A creative studio website with a bold, visual-first design that presents services and work in an engaging, memorable way.</p>
+                            <p class="project-desc">AIStudio &mdash; an AI-powered creative studio website with a bold dark-and-red design, showcasing creative tools and services in an engaging way.</p>
                             <div class="project-footer">
-                                <div class="flex flex-wrap gap-1.5"><span class="project-chip">Branding</span><span class="project-chip">Netlify</span></div>
+                                <div class="flex flex-wrap gap-1.5"><span class="project-chip">AI Tools</span><span class="project-chip">Netlify</span></div>
                                 <span class="project-cta">Live Demo <i class="fa-solid fa-arrow-up-right-from-square"></i></span>
                             </div>
                         </div>
@@ -1354,18 +1367,15 @@
                 </div>
 
                 <!-- Project 7: HTS Akuntansi -->
-                <div class="md:col-span-2 lg:col-span-3 tilt-scene project-scene" style="--c1: 16, 185, 129; --c2: 41, 163, 219;">
+                <div class="md:col-span-2 lg:col-span-3 tilt-scene project-scene" style="--c1: 234, 118, 22; --c2: 96, 165, 250;">
                     <a data-tilt href="https://akuntansi.humantechnologysolutions.com/" target="_blank" rel="noopener" class="tilt-card project-card group" aria-label="Open PT HTS Akuntansi">
                         <div class="project-glow" aria-hidden="true"></div>
                         <div class="project-preview">
                             <div class="project-bar"><span></span><span></span><span></span><em>akuntansi.humantechnologysolutions.com</em></div>
                             <div class="project-screen">
                                 <div class="project-fallback">
-                                    <div class="project-fallback-icon project-fallback-logo"><img src="assets/hts-logo-mark.webp" alt=""></div>
-                                    <div class="project-fallback-title">HTS Akuntansi</div>
-                                    <div class="project-fallback-lines"><i></i><i></i><i></i></div>
+                                    <div class="project-logo" style="--logo-bg: #F1F5EC;"><img src="assets/projects/hts-akuntansi.webp" alt="HTS Akuntansi logo"></div>
                                 </div>
-                                <img src="https://image.thum.io/get/width/900/crop/620/https://akuntansi.humantechnologysolutions.com/" alt="PT HTS Akuntansi preview" loading="lazy" onerror="this.remove()" class="project-shot">
                                 <div class="project-shine" aria-hidden="true"></div>
                             </div>
                         </div>
